@@ -36,7 +36,7 @@ public class btthem {
         System.out.println("Sách: " + sach);
         System.out.println("    Giá: " + gia);
         System.out.println("    Nhà sản xuất: " + nhaSanXuat);
-        System.out.println("    Năm sản xuất: " + namSanXuat);
+        System.out.println("    Năm sản xuất: " + namSanxuat);
         System.out.println("    Giá bán: " + giaBan);
         System.out.println("    Loại: " + loai);
         System.out.println("Nhân viên: " + nhanVien);

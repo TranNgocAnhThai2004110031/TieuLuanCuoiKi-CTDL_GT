@@ -1,4 +1,4 @@
-package vn.edu.giadinh.tuan2;
+/*package vn.edu.giadinh.tuan2;
 
 import vn.edu.giadinh.btthem;
 
@@ -10,4 +10,4 @@ public class btthemTestDrive {
         
         bt.inthongtin();
     }
-}
+}*/

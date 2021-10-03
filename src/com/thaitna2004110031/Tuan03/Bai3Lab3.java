@@ -13,6 +13,12 @@ public class Bai3Lab3 {
             System.out.printf("Nhập vào phần tử thứ %d: ", + (i+1));
             a[i] = sc.nextDouble();
         }
+
         System.out.println("Mảng vừa nhập là: " + Arrays.toString(a));
+
+        System.out.println("=====Duyệt mảng=====");
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
+        }
     }
 }

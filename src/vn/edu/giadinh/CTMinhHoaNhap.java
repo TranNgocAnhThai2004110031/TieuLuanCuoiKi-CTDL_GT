@@ -1,5 +1,7 @@
 package vn.edu.giadinh;
 
+import java.util.Scanner;
+
 public class CTMinhHoaNhap {
     public static void main(String[] args){
         Scanner bienNhap;
