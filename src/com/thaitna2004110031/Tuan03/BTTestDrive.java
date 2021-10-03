@@ -38,7 +38,7 @@ public class BTTestDrive {
         + " Giá: " + maytinh.gia 
         + " Năm bảo hành: " + maytinh.namBaoHanh);
 
-        taikhoan = new TaiKhoan(123456789 , 99999999);
+        taikhoan = new TaiKhoan("Trần Ngọc Anh Thái", 123456789, 99999999);
         System.out.println(" Số tài khoản: " + taikhoan.soTaiKhoan
         + " Số dư tài khoản: " + taikhoan.soDuTaiKhoan); 
 

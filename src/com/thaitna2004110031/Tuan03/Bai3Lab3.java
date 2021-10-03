@@ -8,17 +8,30 @@ public class Bai3Lab3 {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập vào số lượng phần tử của mảng: ");
         int n = sc.nextInt();
-        double [] a = new double [n];
+        int [] mang = new int [n];
         for (int i = 0; i < n; i++) {
             System.out.printf("Nhập vào phần tử thứ %d: ", + (i+1));
-            a[i] = sc.nextDouble();
+            mang[i] = sc.nextInt();
         }
 
-        System.out.println("Mảng vừa nhập là: " + Arrays.toString(a));
+        System.out.println("Mảng vừa nhập là: " + Arrays.toString(mang));
 
-        System.out.println("=====Duyệt mảng=====");
-        for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i]);
+        Arrays.sort(mang);
+        System.out.println("Mảng được sắp xếp là: " + Arrays.toString(mang));
+
+        int min = mang[0];
+        for (int i = 0; i < n; i++){
+            min = Math.min(min, mang[i]);
+        } 
+        System.out.println("Phần tử có giá trị nhỏ nhất trong mảng là: " + min);
+        
+        int tong = 0, dem =0;
+        for (int i = 0; i < n; i++) {
+            if (mang[i]%3==0) {
+                tong = (tong + mang[i]);
+                dem++;
+            }
         }
+        System.out.println("Trung bình cộng các số chia hết cho 3: " + tong/dem);
     }
 }
