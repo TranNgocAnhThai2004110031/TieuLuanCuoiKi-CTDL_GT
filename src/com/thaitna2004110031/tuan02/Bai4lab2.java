@@ -1,14 +1,14 @@
-package com.thaitna2004110031.tuan01vatuan02;
+package com.thaitna2004110031.tuan02;
 
 import java.util.Scanner;
 
-public class Bai4Lab2 {
+public class Bai4lab2 {
     public static void main(String[] args) {
         
         Scanner sc = new Scanner(System.in);
-        Bai1Lab2 bai1;
-        Bai2Lab2 bai2;
-        Bai3Lab2 bai3;
+        Bai1lab2 bai1;
+        Bai2lab2 bai2;
+        Bai3lab2 bai3;
         for (;;) {
             System.out.println("===============Menu==============");
             System.out.println(" 1.  Giải phương trình bậc I");
