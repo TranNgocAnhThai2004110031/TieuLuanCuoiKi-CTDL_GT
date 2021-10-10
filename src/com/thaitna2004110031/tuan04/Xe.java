@@ -16,9 +16,9 @@ public class Xe {
     }
     void inThongTin(){
         System.out.println("Tên chủ xe: " + tenChuXe + "  " 
-        + "Hãng sản xuất: " + hangSanXuat + "  " 
-        + "Dòng: " + dong + "  " 
-        + "Giấy phép: " + giayPhep + " "
-        + "Dung tích xăng: " + dungTichXang);
+        + "vHãng sản xuất: " + hangSanXuat + "  " 
+        + "\nDòng: " + dong + "  " 
+        + "\nGiấy phép: " + giayPhep + " "
+        + "\nDung tích xăng: " + dungTichXang);
     }
 }

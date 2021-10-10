@@ -19,10 +19,10 @@ public class Sach {
     }
     void inThongTin(){
         System.out.println("Giá: " + gia + "  " 
-        + "Nhà sản xuất: " + nhaSanXuat + "  " 
-        + "Năm sản xuất: " + namSanxuat + "  " 
-        + "Số lượng: " + soLuong + " "
-        + "Giá bán: " + giaBan + " "
-        + "Loại: " + loai);
+        + "\nNhà sản xuất: " + nhaSanXuat + "  " 
+        + "\nNăm sản xuất: " + namSanxuat + "  " 
+        + "\nSố lượng: " + soLuong + " "
+        + "\nGiá bán: " + giaBan + " "
+        + "\nLoại: " + loai);
     }
 }

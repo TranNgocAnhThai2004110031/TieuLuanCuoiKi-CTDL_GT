@@ -22,13 +22,13 @@ public class Bai4lab2 {
                 case 0: 
                       break;
                 case 1: 
-                     bai1(); 
+                    // bai1(); 
                      break;
                 case 2: 
-                     bai2(); 
+                     //bai2(); 
                      break;
                 case 3: 
-                     bai1(); 
+                     //bai1(); 
                      break;
                 default: 
                      System.out.println("Sai cú pháp!!!"); 

@@ -14,7 +14,7 @@ public class Bai1lab4 {
             //list.add(i);
         //}
 
-        while(true){ 
+       /* while(true){ 
 
             Double x = sc.nextDouble(); 
             list.add(x); 
@@ -26,6 +26,6 @@ public class Bai1lab4 {
         System.out.println("Các phần tử có trong list là: ");
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i));
-        }
+        }*/
     }
 }

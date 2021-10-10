@@ -13,7 +13,7 @@ public class TaiKhoan {
     }
     void inThongTin(){
         System.out.println("Tên chủ tài khoản: " + tenChutaiKhoan + "  " 
-        + "Số tài khoản: " + soTaiKhoan + "  " 
-        + "số dư tài khoản: " + soDuTaiKhoan);
+        + "\nSố tài khoản: " + soTaiKhoan + "  " 
+        + "\nsố dư tài khoản: " + soDuTaiKhoan);
     }
 }

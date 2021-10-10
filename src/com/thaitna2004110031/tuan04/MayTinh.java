@@ -22,11 +22,11 @@ public class MayTinh {
     }
     void inThongTin(){
         System.out.println("Nhà sản xuất: " + nhaSanXuat + "  " 
-        + "Năm sản xuất: " + namSanXuat + "  " 
-        + "Hệ điều hành: " + heDieuHanh + "  " 
-        + "RAM : " + ram + " "
-        + "CPU: " + cpu + " "
-        + "Giá: " + gia + " "
-        + "Năm bảo hành: " + namBaoHanh);
+        + "\nNăm sản xuất: " + namSanXuat + "  " 
+        + "\nHệ điều hành: " + heDieuHanh + "  " 
+        + "\nRAM : " + ram + " "
+        + "\nCPU: " + cpu + " "
+        + "\nGiá: " + gia + " "
+        + "\nNăm bảo hành: " + namBaoHanh);
     }
 }

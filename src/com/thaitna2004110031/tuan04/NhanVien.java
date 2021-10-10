@@ -17,9 +17,9 @@ public class NhanVien {
     }
     void inThongTin(){
         System.out.println("Tên nhân viên: " + tenNhanVien + "  " 
-        + "Lương: " + luong + "  " 
-        + "Địa chỉ: " + diaChi + "  " 
-        + "bộ phận làm việc: " + boPhanlamViec + " "
-        + "Ngày sinh: " + ngaySinh);
+        + "\nLương: " + luong + "  " 
+        + "\nĐịa chỉ: " + diaChi + "  " 
+        + "\nBộ phận làm việc: " + boPhanlamViec + " "
+        + "\nNgày sinh: " + ngaySinh);
     }
 }

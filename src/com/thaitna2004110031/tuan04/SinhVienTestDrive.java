@@ -9,15 +9,16 @@ public class SinhVienTestDrive {
         int n = mang.nextInt();
         SinhVien[] sinhVienList = new SinhVien[n];
         for (int i = 0; i < sinhVienList.length; i++) {
+            Scanner sc = new Scanner(System.in);
             System.out.println("Nhập vào sinh viên thứ " +(i+1) );
             System.out.print("Mã số sinh viên: ");
-            int Mssv = mang.nextInt();
+            int Mssv = sc.nextInt();
             System.out.print("Họ và tên: " );
-            String hoVaTen = mang.nextLine();
+            String hoVaTen = sc.nextLine();
             System.out.print("Tuổi: ");
-            int tuoi = mang.nextInt();
+            int tuoi = sc.nextInt();
             System.out.print("Quê quán: ");
-            String queQuan = mang.nextLine();
+            String queQuan = sc.nextLine();
             mang.nextLine();
             sinhVienList[i] = new SinhVien(Mssv, hoVaTen, tuoi, queQuan);
         }
