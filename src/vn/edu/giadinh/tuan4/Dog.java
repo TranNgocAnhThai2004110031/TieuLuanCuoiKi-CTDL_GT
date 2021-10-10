@@ -1,9 +1,9 @@
 package vn.edu.giadinh.tuan4;
 
 public class Dog {
-    int size;
-    String color;
-    String name;
+    public int size;
+    public String color;
+    public String name;
     public Dog(){}
 
     public Dog(int s){

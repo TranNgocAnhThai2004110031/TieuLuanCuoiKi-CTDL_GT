@@ -1,4 +1,4 @@
-package vn.edu.giadinh.tuan03;
+package vn.edu.giadinh.tuan301;
 
 public class InBangCuuChuong {
     public static void main(String[] args){

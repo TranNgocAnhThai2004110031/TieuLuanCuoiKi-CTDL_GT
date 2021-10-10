@@ -25,18 +25,18 @@ public class ChuongTrinhLad2Bai4 {
     }
     static void giaiPTBacI(){
         float a,b;
-        if (a==0) {
-            if(b==0){
+        //if (a==0) {
+            //if(b==0){
                 System.out.println("PT vô số nghiệm...");
             }
-            else System.out.println("PT vô nghiệm...");
-        }
-        else {
+            //else System.out.println("PT vô nghiệm...");
+        //}
+        //else {
             float x;
-            x = float(-b/a);
-            System.out.println("PT có nghiệm là: " +x);
-        }
-    }
+            //x = float(-b/a);
+           // System.out.println("PT có nghiệm là: " +x);
+        //}
+    //}
 
     static void giaiPTBacII(){
         System.out.println("Triển khai code giải pt bậc II");

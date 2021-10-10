@@ -1,4 +1,4 @@
-package vn.edu.giadinh.tuan03;
+package vn.edu.giadinh.tuan301;
 
 import java.util.Scanner;
 
@@ -11,8 +11,7 @@ public class ChuongTrinhLad2Bai4 {
         System.out.println("=============Menu=============");
         int suLuaChon;
         System.out.println("Lua chon chuc nang: ");
-        Scanner bienNhap;
-        bienNhap = new Scanner(System.in);
+        Scanner bienNhap = new Scanner(System.in);
         suLuaChon = bienNhap.nextInt();
 
         switch(suLuaChon){
@@ -25,7 +24,7 @@ public class ChuongTrinhLad2Bai4 {
     }
     static void giaiPTBacI(){
         float a,b;
-        if (a==0) {
+        /*if (a==0) {
             if(b==0){
                 System.out.println("PT vô số nghiệm...");
             }
@@ -35,7 +34,7 @@ public class ChuongTrinhLad2Bai4 {
             float x;
             x = float(-b/a);
             System.out.println("PT có nghiệm là: " +x);
-        }
+        }*/
     }
 
     static void giaiPTBacII(){

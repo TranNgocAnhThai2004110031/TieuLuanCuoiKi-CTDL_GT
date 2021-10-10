@@ -1,4 +1,4 @@
-package vn.edu.giadinh.tuan03;
+package vn.edu.giadinh.tuan301;
 
 public class CowTestDrive {
     public static void main(String[] args){

@@ -1,4 +1,4 @@
-package vn.edu.giadinh.tuan03;
+package vn.edu.giadinh.tuan301;
 
 import java.util.Scanner;
 

@@ -1,14 +1,13 @@
-package vn.edu.giadinh;
+package vn.edu.giadinh.tuan2;
 
 import java.util.Scanner;
 
 public class CTMinhHoaNhap {
     public static void main(String[] args){
-        Scanner bienNhap;
         double diemMonCTDLGT;
         diemMonCTDLGT = 5.0;
 
-        bienNhap = new Scanner(System.in);
+        Scanner bienNhap = new Scanner(System.in);
         System.out.print("Nhập vào điểm môn CTDL&GT: ");
         diemMonCTDLGT = bienNhap.nextDouble();
 
@@ -16,5 +15,5 @@ public class CTMinhHoaNhap {
 
         //String chuoi = new String("Hello");
         
-    } 
+    }
 }
