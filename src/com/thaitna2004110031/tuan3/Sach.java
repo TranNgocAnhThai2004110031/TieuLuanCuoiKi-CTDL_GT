@@ -1,4 +1,4 @@
-package com.thaitna2004110031.tuan03;
+package com.thaitna2004110031.tuan3;
 
 public class Sach {
     double gia;
@@ -15,4 +15,4 @@ public class Sach {
         giaBan = gb;
         loai = l;
     }
-} 
+}

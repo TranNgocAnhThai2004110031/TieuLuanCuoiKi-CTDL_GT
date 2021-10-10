@@ -1,4 +1,4 @@
-package com.thaitna2004110031.tuan03;
+package com.thaitna2004110031.tuan3;
 
 public class BTTestDrive {
     public static void main(String[] args){
@@ -41,6 +41,5 @@ public class BTTestDrive {
         taikhoan = new TaiKhoan("Trần Ngọc Anh Thái", 123456789, 99999999);
         System.out.println(" Số tài khoản: " + taikhoan.soTaiKhoan
         + " Số dư tài khoản: " + taikhoan.soDuTaiKhoan); 
-
     }
 }

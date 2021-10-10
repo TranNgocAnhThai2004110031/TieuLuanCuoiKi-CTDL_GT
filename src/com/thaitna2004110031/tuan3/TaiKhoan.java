@@ -1,4 +1,4 @@
-package com.thaitna2004110031.tuan03;
+package com.thaitna2004110031.tuan3;
 
 public class TaiKhoan {
     String tenChutaiKhoan;
@@ -11,4 +11,4 @@ public class TaiKhoan {
         soTaiKhoan = stk;
         soDuTaiKhoan = sdtk;
     }
-} 
+}

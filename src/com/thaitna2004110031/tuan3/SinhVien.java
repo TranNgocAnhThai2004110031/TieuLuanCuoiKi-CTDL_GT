@@ -1,4 +1,4 @@
-package com.thaitna2004110031.tuan03;
+package com.thaitna2004110031.tuan3;
 
 public class SinhVien {
     int Mssv, tuoi;

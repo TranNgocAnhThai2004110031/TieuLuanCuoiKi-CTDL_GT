@@ -1,4 +1,4 @@
-package com.thaitna2004110031.tuan03;
+package com.thaitna2004110031.tuan3;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -35,3 +35,4 @@ public class Bai3Lab3 {
         System.out.println("Trung bình cộng các số chia hết cho 3: " + tong/dem);
     }
 }
+

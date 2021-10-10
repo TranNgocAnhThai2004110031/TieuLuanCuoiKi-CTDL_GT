@@ -1,4 +1,4 @@
-package com.thaitna2004110031.tuan03;
+package com.thaitna2004110031.tuan3;
 
 public class student {
     String tenSV;
@@ -13,4 +13,4 @@ public class student {
         System.out.println("Họ và tên: " +tenSV +"  " 
         +"Tuổi: " + tuoi );
     }
-} 
+}
