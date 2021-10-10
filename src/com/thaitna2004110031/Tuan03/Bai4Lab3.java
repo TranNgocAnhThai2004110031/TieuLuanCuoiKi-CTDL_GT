@@ -15,7 +15,6 @@ public class Bai4Lab3 {
             System.out.print("Điểm: ");
             double diem = mang.nextDouble();
             danhSachSinhVien[i] = new SinhVienBai4Lab3(tenSinhVien, diem);
-
         }
         for (SinhVienBai4Lab3 dssv: danhSachSinhVien) {
             dssv.inThongTin();
