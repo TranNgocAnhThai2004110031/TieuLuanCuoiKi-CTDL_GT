@@ -8,5 +8,5 @@ public class Bai3Lab1 {
         System.out.printf("Nhập vào cạnh của khối lập phương: ");
         double canh = sc.nextDouble();
         System.out.println("Thể tích cảu khối lập phương: " + Math.pow(canh, 3));
-      }
+      } 
 }

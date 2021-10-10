@@ -13,5 +13,5 @@ public class Xe {
         dong = d;
         giayPhep = gp;
         dungTichXang = dtx;
-    }
+    } 
 }

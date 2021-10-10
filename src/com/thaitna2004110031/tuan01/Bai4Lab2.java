@@ -6,7 +6,7 @@ public class Bai4Lab2 {
     public static void main(String[] args) {
         
         Scanner sc = new Scanner(System.in);
-        Bai1Lab2 bai1;
+        Bai1Lab2 bai1; 
         Bai2Lab2 bai2;
         Bai3Lab2 bai3;
         for (;;) {

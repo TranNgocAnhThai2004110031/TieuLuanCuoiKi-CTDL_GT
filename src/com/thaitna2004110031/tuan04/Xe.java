@@ -1,6 +1,6 @@
 package com.thaitna2004110031.tuan04;
 
-public class Xe {
+public class Xe { 
     String tenChuXe;
     String hangSanXuat;
     String dong;

@@ -13,4 +13,4 @@ public class student {
         System.out.println("Họ và tên: " +tenSV +"  " 
         +"Tuổi: " + tuoi );
     }
-}
+} 

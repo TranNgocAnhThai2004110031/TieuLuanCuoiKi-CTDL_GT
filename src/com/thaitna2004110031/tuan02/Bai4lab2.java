@@ -7,7 +7,7 @@ public class Bai4lab2 {
         
         Scanner sc = new Scanner(System.in);
         Bai1lab2 bai1;
-        Bai2lab2 bai2;
+        Bai2lab2 bai2; 
         Bai3lab2 bai3;
         for (;;) {
             System.out.println("===============Menu==============");

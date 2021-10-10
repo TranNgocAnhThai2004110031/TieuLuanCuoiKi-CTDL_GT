@@ -5,7 +5,7 @@ public class Sach {
     String nhaSanXuat;
     int namSanxuat;
     int soLuong;
-    double giaBan;
+    double giaBan; 
     String loai;
 
     Sach(){}

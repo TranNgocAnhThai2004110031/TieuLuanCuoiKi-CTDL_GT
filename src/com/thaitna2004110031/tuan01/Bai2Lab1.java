@@ -15,4 +15,5 @@ public class Bai2Lab1 {
         System.out.println("Diện tích hình chữ nhật: " + dienTich);
         System.out.println("Cạnh nhỏ nhất: " + Math.min(chieuDai, chieuRong));
     }
+    
 }

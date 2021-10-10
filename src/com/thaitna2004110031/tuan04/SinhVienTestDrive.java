@@ -16,7 +16,7 @@ public class SinhVienTestDrive {
             System.out.print("Họ và tên: " );
             String hoVaTen = sc.nextLine();
             System.out.print("Tuổi: ");
-            int tuoi = sc.nextInt();
+            int tuoi = sc.nextInt(); 
             System.out.print("Quê quán: ");
             String queQuan = sc.nextLine();
             mang.nextLine();

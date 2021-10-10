@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class TaiKhoanTestDrive {
     public static void main(String[] args) {
         Scanner mang = new Scanner(System.in);
-        System.out.print("Nhập vào số tài khoản: ");
+        System.out.print("Nhập vào số tài khoản: "); 
         int n = mang.nextInt();
         TaiKhoan[] taiKhoanList = new TaiKhoan[n];
         for (int i = 0; i < taiKhoanList.length; i++) {

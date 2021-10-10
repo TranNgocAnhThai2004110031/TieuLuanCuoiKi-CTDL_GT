@@ -8,7 +8,7 @@ public class Bai2lab2 {
         System.out.print("Nhập vào hệ số a, b, c của phương trình ax^2 + bx + c = 0: ");
         double a = sc.nextDouble();
         double b = sc.nextDouble();
-        double c = sc.nextDouble();
+        double c = sc.nextDouble(); 
         if (a==0) {
             if (b==0) {
                 if (c==0) {

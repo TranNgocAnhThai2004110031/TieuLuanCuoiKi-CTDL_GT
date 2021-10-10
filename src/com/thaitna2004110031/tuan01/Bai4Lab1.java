@@ -13,3 +13,4 @@ public class Bai4Lab1 {
         System.out.printf("Căn của Delta: %.3f", Math.sqrt(delta));
     }
 }
+ 

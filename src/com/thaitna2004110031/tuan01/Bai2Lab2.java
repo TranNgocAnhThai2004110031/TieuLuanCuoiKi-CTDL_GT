@@ -31,7 +31,7 @@ public class Bai2Lab2 {
                 System.out.println("Phương trình có 2 nghiệm phân biệt: ");
                 System.out.printf("x1 = %.2f", ( -b + Math.sqrt(delta))/(2*a));
                 System.out.printf(" x2 = %.2f", +( -b - Math.sqrt(delta))/(2*a));
-            }
+            } 
         }
     }
 }

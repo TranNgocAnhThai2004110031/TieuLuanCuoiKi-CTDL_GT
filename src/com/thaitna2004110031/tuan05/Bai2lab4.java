@@ -3,7 +3,7 @@ package com.thaitna2004110031.tuan05;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Collections;
-
+ 
 public class Bai2lab4 {
     private ArrayList<String> list = new ArrayList<>();
     public static void main(String[] args) {

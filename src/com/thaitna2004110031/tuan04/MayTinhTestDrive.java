@@ -2,7 +2,7 @@ package com.thaitna2004110031.tuan04;
 
 import java.util.Scanner;
 
-public class MayTinhTestDrive {
+public class MayTinhTestDrive { 
     public static void main(String[] args) {
         Scanner mang = new Scanner(System.in);
         System.out.print("Nhập vào số lượng máy tính: ");

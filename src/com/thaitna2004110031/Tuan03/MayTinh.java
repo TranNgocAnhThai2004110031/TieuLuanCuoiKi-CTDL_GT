@@ -3,7 +3,7 @@ package com.thaitna2004110031.tuan03;
 public class MayTinh {
     String nhaSanXuat;
     String namSanXuat;
-    String heDieuHanh;
+    String heDieuHanh; 
     String ram;
     String cpu;
     double gia;

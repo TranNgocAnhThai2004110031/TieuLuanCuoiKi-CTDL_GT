@@ -10,7 +10,7 @@ public class SinhVien {
         hoVaTen = hvt;
         tuoi = t;
         queQuan = qq;
-    }
+    } 
 
     void inThongTin(){
         System.out.println("Ma số sinh viên: " +Mssv + "  " 

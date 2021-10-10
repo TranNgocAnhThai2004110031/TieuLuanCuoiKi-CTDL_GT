@@ -4,7 +4,7 @@ public class NhanVien {
     String tenNhanVien;
     double luong;
 	String diaChi;
-    String boPhanlamViec;
+    String boPhanlamViec; 
     String ngaySinh;
 
     NhanVien(){}

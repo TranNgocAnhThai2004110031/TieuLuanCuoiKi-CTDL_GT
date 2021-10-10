@@ -11,4 +11,5 @@ public class Bai1lab1 {
         double diemTB = sc.nextDouble(); 
         System.out.printf("%s %.2f điểm", hoVaTen, diemTB); 
     }
+    
 }

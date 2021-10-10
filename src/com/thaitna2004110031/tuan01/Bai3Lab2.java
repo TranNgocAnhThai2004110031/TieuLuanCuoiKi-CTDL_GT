@@ -12,5 +12,5 @@ public class Bai3Lab2 {
         } else {
             System.out.printf("Tiền điện phải trả: %d đồng", 50*1000 + (soDien-50)*1200);
         }
-    }
+    } 
 }

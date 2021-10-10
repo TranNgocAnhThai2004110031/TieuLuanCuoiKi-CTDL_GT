@@ -11,7 +11,7 @@ public class SanPham {
         ten = t;
         gia = g;   
     }
-
+ 
     public double  getgia() {
         return gia;
     }

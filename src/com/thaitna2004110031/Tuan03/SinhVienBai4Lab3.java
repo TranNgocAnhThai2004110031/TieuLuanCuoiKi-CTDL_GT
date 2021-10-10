@@ -8,7 +8,7 @@ public class SinhVienBai4Lab3 {
         tenSinhVien = tsv;
         diem = d;
     }
-
+ 
     void inThongTin(){
         System.out.println("Họ và tên: " + tenSinhVien + "  " 
         + "Điểm: " + diem );

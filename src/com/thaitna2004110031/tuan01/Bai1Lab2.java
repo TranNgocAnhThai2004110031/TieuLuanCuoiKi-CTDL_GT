@@ -16,5 +16,6 @@ public class Bai1Lab2 {
         } else {
             System.out.println("Phương trình có nghiệm x = " + -b/a);
         }
+        
     }
 }

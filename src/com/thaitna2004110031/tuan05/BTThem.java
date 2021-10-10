@@ -2,7 +2,7 @@ package com.thaitna2004110031.tuan05;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
+import java.util.Scanner; 
 
 public class BTThem {
     public static void main(String[] args) {

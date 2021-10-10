@@ -9,7 +9,7 @@ public class SVDV {
     }
     public SVDV(String ten, double diem) {
         this.hoVaTen = ten;
-        this.diemTB = diem;
+        this.diemTB = diem; 
     }
 
     public double getdiemTB(){

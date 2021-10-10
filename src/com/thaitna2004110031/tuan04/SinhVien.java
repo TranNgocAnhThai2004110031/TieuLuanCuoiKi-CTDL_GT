@@ -8,7 +8,7 @@ public class SinhVien {
     SinhVien(){}
     SinhVien(int m, String h, int t, String q){
         Mssv = m;
-        hoVaTen = h;
+        hoVaTen = h; 
         tuoi = t;
         queQuan = q;
     }

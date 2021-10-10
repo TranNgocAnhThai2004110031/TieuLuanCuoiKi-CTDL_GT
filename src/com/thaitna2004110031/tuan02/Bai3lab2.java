@@ -7,7 +7,7 @@ public class Bai3lab2 {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập vào số điện sử dụng của tháng: ");
         int soDien = sc.nextInt();
-        if (soDien > 0 && soDien <= 50) {
+        if (soDien > 0 && soDien <= 50) { 
             System.out.printf("Tiền điện phải trả: %d đồng", soDien*1000);
         } else {
             System.out.printf("Tiền điện phải trả: %d đồng", 50*1000 + (soDien-50)*1200);

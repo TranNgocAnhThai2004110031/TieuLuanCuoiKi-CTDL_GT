@@ -6,7 +6,7 @@ public class MayTinh {
     String heDieuHanh;
     int ram;
     String cpu;
-    double gia;
+    double gia; 
 	int namBaoHanh;
 
     MayTinh(){}

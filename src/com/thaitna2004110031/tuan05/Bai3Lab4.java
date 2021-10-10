@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Bai3Lab4 {
-    public static void main(String[] args) {
+    public static void main(String[] args) { 
         Bai3Lab4 ds = new Bai3Lab4();
         ds.menu();
     }

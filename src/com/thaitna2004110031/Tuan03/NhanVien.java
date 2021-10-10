@@ -14,5 +14,5 @@ public class NhanVien {
         diaChi = dc;
         boPhanlamViec = bplv;
         ngaySinh = ns;
-    }
+    } 
 }

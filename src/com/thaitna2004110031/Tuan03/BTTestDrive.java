@@ -4,7 +4,7 @@ public class BTTestDrive {
     public static void main(String[] args){
         Sach sach;
         NhanVien nhanvien;
-        Xe xe;
+        Xe xe; 
         MayTinh maytinh;
         TaiKhoan taikhoan;
 
