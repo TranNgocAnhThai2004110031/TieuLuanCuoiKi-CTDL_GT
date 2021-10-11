@@ -19,9 +19,13 @@ public class Bai3Lab4 {
                 Scanner nhap = new Scanner(System.in);
                 System.out.printf("Nhập tên sản phẩm thứ %d: " ,i+1); 
                 String ten = nhap.nextLine(); 
-                System.out.print("Nhập giá: ");
+                System.out.print("Nhập giá sản phẩm: ");
                 double gia = nhap.nextDouble();
-                list.add(new SanPham(ten, gia));
+                System.out.print("Nhập giá sản phẩm giảm: ");
+                double giamGia = nhap.nextDouble();
+                System.out.print("Nhập thuế nhập khẩu của sản phẩm: ");
+                double thueNhapKhau = nhap.nextDouble();
+                list.add(new SanPham(ten, gia, giamGia, thueNhapKhau));
             } 
             if(sc.nextLine().isEmpty()){ 
                 break; 
@@ -30,15 +34,17 @@ public class Bai3Lab4 {
     }
     public void hienthi() {
         System.out.println("danh sách sản phẩm");
-        System.out.println("Tên \t|Giá");
+        System.out.println("Tên \t|Giá \t|Giảm giá \t|Thuế nhập khẩu \t");
         for(SanPham sanPham : list){
-            System.out.printf("%s\t|%.2f\n", sanPham.getten(), sanPham.getgia()); 
+            System.out.printf("%s\t|%.2f\t|%.2f\t\t|%.2f\n", sanPham.getten(), sanPham.getgia(), sanPham.getgiamGia(), sanPham.getthueNhapKhau()); 
         }
          
     }
     public void sapxep() {
         System.out.println("=====Danh sách sau khi sắp xếp=====");
         Collections.sort(list, (a ,b) ->(int) (a.getgia() - b.getgia()));
+        //Collections.sort(list);
+        //Collections.reverse(list);
         hienthi(); 
     }
     public void timVaXoa() {

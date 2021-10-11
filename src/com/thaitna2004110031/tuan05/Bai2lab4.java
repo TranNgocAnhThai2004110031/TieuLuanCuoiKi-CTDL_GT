@@ -41,7 +41,8 @@ public class Bai2lab4 {
     }
     //sắp xếp theo thứ tự giảm dần
     public void sapXep() {
-        Collections.sort(list, (a ,b)-> a.compareTo(b)); 
+        Collections.sort(list);
+        Collections.reverse(list);
         xuat();
     }
     //phương thức tìm và xóa 
