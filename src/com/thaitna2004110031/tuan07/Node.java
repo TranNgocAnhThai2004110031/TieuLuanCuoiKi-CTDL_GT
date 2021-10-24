@@ -18,4 +18,16 @@ public class Node {
         data = d;
         next = n;
     }
+    public void setnext(Node next){
+        this.next = next;
+    }
+    public Node getnext(){
+        return next;
+    }
+    public void setdata(int data){
+        this.data = data;
+    }
+    public Integer getdata(){
+        return data;
+    }
 }
