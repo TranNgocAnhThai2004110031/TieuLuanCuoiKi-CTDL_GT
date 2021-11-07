@@ -3,7 +3,7 @@ package com.thaitna2004110031.kiemtragiuaky;
 public class LinkedListTestDrive {
     public static void main(String[] args) {
         LinkedList testDrive = new LinkedList();
-        testDrive.add(1, 2, "Do");
+        testDrive.add(1, 2, "xanh" );
         testDrive.add(2, 4, "Do");
         testDrive.add(3, 6, "Xanh");
         testDrive.add(4, 8, "Xanh");

@@ -1,12 +1,12 @@
 package com.thaitna2004110031.kiemtragiuaky;
 
 public class LinkedList {
-    int ma;
-    double khoiLuong;
-    String mauSac;
+    // int ma;
+    // double khoiLuong;
+    // String mauSac;
     Apple head = null;
     Apple tail = null;
-    void add(int ma, double khoiLuong, String maSac){
+    public void add(int ma, double khoiLuong, String mauSac){
         Apple newNode = new Apple(ma, khoiLuong, mauSac);
         if (head==null) {
             head = newNode;
@@ -15,15 +15,16 @@ public class LinkedList {
             tail.next = newNode;
             tail  = newNode;            
         }
+        return;
     }
-    public void themVaoDau(int ma, double khoiLuong, String maSac){
+    public void themVaoDau(int ma, double khoiLuong, String mauSac){
         Apple newNode = new Apple(ma, khoiLuong, mauSac);
         if (head!=null) {
             newNode.setnext(this.head);
             this.head = newNode;
         }
     } 
-    public void themVaoCuoi(int ma, double khoiLuong, String maSac){
+    public void themVaoCuoi(int ma, double khoiLuong, String mauSac){
         Apple newNode = new Apple(ma, khoiLuong, mauSac);
         tail.next = newNode;
         tail  = newNode;
@@ -39,7 +40,7 @@ public class LinkedList {
         }
         preLast.setnext(null);
     }
-    public boolean themTruocMotPhanTu(int ma, double khoiLuong, String maSac, int key) {
+    public boolean themTruocMotPhanTu(int ma, double khoiLuong, String mauSac, int key) {
         if (this.head.equals(key)) {
             return true;
         }
@@ -49,7 +50,7 @@ public class LinkedList {
         }
         if (cur.getnext() == null)
             return false;
-        Apple newNode = new Apple(ma, khoiLuong, maSac);
+        Apple newNode = new Apple(ma, khoiLuong, mauSac);
         newNode.setnext(cur.getnext());
         cur.setnext(newNode);
         return true;
@@ -62,9 +63,13 @@ public class LinkedList {
         }
 
         System.out.println("Danh sách táo: ");
+        System.out.println("Mã"  +"\t"+"Khối lượng "  +"\t" +"Màu sắc " );
         while(current!=null){
             
             current.inThongTin();
+            // System.out.print(current.getma());
+            // System.out.print(current.getkhoiLuong());
+            // System.out.print(current.getmauSac());
             current = current.next;
         }
     }

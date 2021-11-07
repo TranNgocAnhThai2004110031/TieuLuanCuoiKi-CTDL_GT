@@ -1,4 +1,4 @@
-package com.thaitna2004110031.kiemtragiuaky;
+package com.thaitna2004110031.tuan09;
 
 public class Apple {
     private int ma;
@@ -46,10 +46,9 @@ public class Apple {
         return next;
     }
     void inThongTin(){
-        
         System.out.println(ma +"\t" + khoiLuong +"\t\t" +mauSac);
+        // System.out.println("Mã: " +ma +"\t"+"Khối lượng: " +khoiLuong +"\t" +"Màu sắc: " +mauSac);
         // System.out.println("Khối lượng: " +khoiLuong);
         // System.out.println("Màu sắc: " +mauSac);
     }
-
 }
