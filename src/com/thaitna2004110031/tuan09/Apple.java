@@ -1,10 +1,13 @@
 package com.thaitna2004110031.tuan09;
 
+import java.util.Scanner;
+
 public class Apple {
-    private int ma;
-    private double khoiLuong;
-    private String mauSac;
+    int ma;
+    double khoiLuong;
+    String mauSac;
     Apple next;
+    Scanner nhap = new Scanner(System.in);
     
     public Apple(){
     }
@@ -44,6 +47,16 @@ public class Apple {
     }
     public Apple getnext(){
         return next;
+    }
+    void nhap(){
+        System.out.println("====================");
+        System.out.printf("Mã: "); 
+        ma = nhap.nextInt(); 
+        System.out.print("Khối lượng: ");
+        khoiLuong = nhap.nextDouble();
+        System.out.print("Màu sắc: ");
+        nhap.nextLine();
+        mauSac = nhap.nextLine();
     }
     void inThongTin(){
         System.out.println(ma +"\t" + khoiLuong +"\t\t" +mauSac);

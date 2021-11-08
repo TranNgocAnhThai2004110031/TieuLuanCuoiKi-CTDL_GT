@@ -12,7 +12,8 @@ public class BaiTap {
     private LinkedList<Apple> list = new LinkedList<>();   
     
     public void add(){
-        Apple newNode = new Apple(ma, khoiLuong, mauSac);
+        Apple newNode = new Apple();
+        newNode.nhap();
         if (head==null) {
             head = newNode;
             tail = newNode;
@@ -28,16 +29,27 @@ public class BaiTap {
         int n = sc.nextInt();
         while(true){ 
             for (int i = 0; i < n ; i++) {
-                Scanner nhap = new Scanner(System.in);
-                Scanner m = new Scanner(System.in);
-                System.out.println("Nhập thông tin táo thứ "+ (i+1));
-                System.out.printf("Mã: " ,i+1); 
-                int ma = nhap.nextInt(); 
-                System.out.print("Khối lượng: ");
-                double khoiLuong = nhap.nextDouble();
-                System.out.print("Màu sắc: ");
-                String mauSac = m.nextLine();
-                list.add(new Apple(ma, khoiLuong, mauSac));
+                // Scanner nhap = new Scanner(System.in);
+                // Scanner m = new Scanner(System.in);
+                // System.out.println("Nhập thông tin táo thứ "+ (i+1));
+                // System.out.printf("Mã: " ,i+1); 
+                // int ma = nhap.nextInt(); 
+                // System.out.print("Khối lượng: ");
+                // double khoiLuong = nhap.nextDouble();
+                // System.out.print("Màu sắc: ");
+                // String mauSac = m.nextLine();
+                // list.add(new Apple(ma, khoiLuong, mauSac));
+                
+                Apple newApple = new Apple();
+                newApple.nhap();
+                if (head == null) {
+                    head = newApple;
+                    tail = newApple;
+                } else {
+                    tail.next = newApple;
+                    tail = newApple;
+                }
+                 
             } 
             if(sc.nextLine().isEmpty()){ 
                 break; 
@@ -46,29 +58,58 @@ public class BaiTap {
     }
 
     public void selectionSort() {
-        Apple sx = null;
-        for (Apple tao : list) {
-            double a[] = {tao.getkhoiLuong()};
-            for(int i = 0; i < a.length - 1; i++){
-                int index = i;
-                for (int j = i + 1; j < a.length; j++) {
-                    if (a[j] < a[index]) {
-                        index = j;
+        // System.out.println("\nDanh sách táo được sắp xếp tăng dần: ");
+        // for (Apple tao : list) {
+        //     double a[] = {tao.khoiLuong};
+        //     for(int i = 0; i < a.length - 1; i++){
+        //         int index = i;
+        //         for (int j = i + 1; j < a.length; j++) {
+        //             if (a[j] < a[index]) {
+        //                 index = j;
+        //             }
+        //             double smallerNumber = a[index];
+        //             a[index] = a[i];
+        //             a[i] = smallerNumber;
+        //         }
+        //     }            
+        // }  
+             
+        // System.out.println("\nDanh sách táo được sắp xếp tăng dần: ");
+        // xuat();
+        Apple current = head;
+        Apple index = null;
+        int tam;
+        double tam1;
+        String tam2;
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            while (current != null) {
+                index = current.next;
+                while (index != null) {
+                    if (current.khoiLuong < index.khoiLuong) {
+                        // mã
+                        tam = current.ma;
+                        current.ma= index.ma;
+                        index.ma = tam;
+                        // khối lượng
+                        tam1 = index.khoiLuong;
+                        index.khoiLuong = current.khoiLuong;
+                        current.khoiLuong = tam1;
+                        // màu sắc
+                        tam2 = current.mauSac;
+                        current.mauSac = index.mauSac;
+                        index.mauSac = tam2;
+    
                     }
-                    double smallerNumber = a[index];
-                    a[index] = a[i];
-                    a[i] = smallerNumber;
+                    index = index.next;
                 }
+                current = current.next;
             }
-            tao = sx;
-            
-        }        
-        System.out.println("\nDanh sách táo được sắp xếp tăng dần: ");
-        sx.inThongTin();            
+        }
     }
 
     public void selectionSortGiam() {
-        Apple sx = null;
         for (Apple tao : list) {
             double a[] = {tao.getkhoiLuong()};
             for(int i = 0; i < a.length - 1; i++){
@@ -82,58 +123,100 @@ public class BaiTap {
                     a[i] = smallerNumber;
                 }
             }
-            sx = tao;
         }        
         System.out.println("\nDanh sách táo được sắp xếp giảm dần: ");
-        sx.inThongTin();            
+        // sx.inThongTin();            
     }
 
-    public void bubbleSort() {
-        Apple sx = null;
-        for (Apple tao : list) {
-            double a[] = {tao.getkhoiLuong()};
-            int n = a.length;
-            double temp = 0;
-            for(int i = 0; i < n; i++){
-                for (int j = 1; j < n - i; j++) {
-                    if (a[j-1] > a[j]) {
-                        temp = a[j-1];
-                        a[j-1] = a[j];
-                        a[j] = temp;
+    public void bubbleSort() {     
+        Apple current = head;
+        Apple index = null;
+        int tam;
+        double tam1;
+        String tam2;
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            while (current != null) {
+                index = current.next;
+                while (index != null) {
+                    if (current.khoiLuong > index.khoiLuong) {
+                        // mã
+                        tam = current.ma;
+                        current.ma= index.ma;
+                        index.ma = tam;
+                        // khối lượng
+                        tam1 = current.khoiLuong;
+                        current.khoiLuong = index.khoiLuong;
+                        index.khoiLuong = tam1;
+                        // màu sắc
+                        tam2 = current.mauSac;
+                        current.mauSac = index.mauSac;
+                        index.mauSac = tam2;
+    
                     }
+                    index = index.next;
                 }
-                sx = tao;
+                current = current.next;
             }
-            
-        } 
-        System.out.println("\nDanh sách táo được sắp xếp tăng dần: ");
-        sx.inThongTin();              
+        }
+                     
     }
 
     public void bubbleSortGiam() {
-        Apple sx = null;
-        for (Apple tao : list) {
-            double a[] = {tao.getkhoiLuong()};
-            int n = a.length;
-            double temp = 0;
-            for(int i = 0; i < n; i++){
-                for (int j = 1; j < n - i; j++) {
-                    if (a[j-1] < a[j]) {
-                        temp = a[j-1];
-                        a[j-1] = a[j];
-                        a[j] = temp;
+        Apple current = head;
+            Apple index = null;
+            int tam;
+            double tam1;
+            String tam2;
+            if (head == null) {
+                System.out.println("- Danh sách rỗng.");
+            } else {
+                while (current != null) {
+                    index = current.next;
+                    while (index != null) {
+                        if (current.khoiLuong < index.khoiLuong) {
+                            // mã
+                            tam = current.ma;
+                            current.ma= index.ma;
+                            index.ma = tam;
+                            // khối lượng
+                            tam1 = index.khoiLuong;
+                            index.khoiLuong = current.khoiLuong;
+                            current.khoiLuong = tam1;
+                            // màu sắc
+                            tam2 = current.mauSac;
+                            current.mauSac = index.mauSac;
+                            index.mauSac = tam2;
+    
+                        }
+                        index = index.next;
                     }
+                    current = current.next;
                 }
-                sx = tao;
             }
+        // Apple sx = null;
+        // for (Apple tao : list) {
+        //     double a[] = {tao.getkhoiLuong()};
+        //     int n = a.length;
+        //     double temp = 0;
+        //     for(int i = 0; i < n; i++){
+        //         for (int j = 1; j < n - i; j++) {
+        //             if (a[j-1] < a[j]) {
+        //                 temp = a[j-1];
+        //                 a[j-1] = a[j];
+        //                 a[j] = temp;
+        //             }
+        //         }
+        //         sx = tao;
+        //     }
             
-        } 
-        System.out.println("\nDanh sách táo được sắp xếp giảm dần: ");
-        sx.inThongTin();              
+        // } 
+        // System.out.println("\nDanh sách táo được sắp xếp giảm dần: ");
+        // sx.inThongTin();              
     }
 
     public void intertionsort() {
-        Apple sx = null;
         for (Apple tao : list) {
             double a[] = {tao.getkhoiLuong()};
             int n =a.length;
@@ -147,14 +230,12 @@ public class BaiTap {
                 }
                 a[j+1] = key;
             }
-            sx = tao;
         }        
         System.out.println("\nDanh sách táo được sắp xếp tăng dần: ");
-        sx.inThongTin();            
+        xuat();            
     }
 
     public void intertionsortGiam() {
-        Apple sx = null;
         for (Apple tao : list) {
             double a[] = {tao.getkhoiLuong()};
             int n =a.length;
@@ -168,88 +249,89 @@ public class BaiTap {
                 }
                 a[j+1] = key;
             }
-            sx = tao;
         }        
         System.out.println("\nDanh sách táo được sắp xếp tăng dần: ");
-        sx.inThongTin();            
-    }
-
-    public void print(){
-        Apple current = head;
-        if (head==null) {
-            System.out.println("Danh sách rỗng!!!");
-            return;
-        }
-        System.out.println("Danh sách táo: ");
-        System.out.println("Mã"  +"\t"+"Khối lượng "  +"\t" +"Màu sắc " );
-        while(current!=null){            
-            current.inThongTin();
-            current = current.next;
-        }
+        xuat();            
     }
 
     public void xuat(){
-        System.out.println("=====Danh sách táo=====");
-        System.out.println("Mã: "  +"\t"+"Khối lượng: "  +"\t" +"Màu sắc: " );
-        for (Apple a : list) {
-            a.inThongTin();
+        // System.out.println("=====Danh sách táo=====");
+        // System.out.println("Mã: "  +"\t"+"Khối lượng: "  +"\t" +"Màu sắc: " );
+        // for (Apple a : list) {
+        //     a.inThongTin();
+        // }
+        Apple current = head;
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            System.out.println("Mã: "  +"\t"+"Khối lượng: "  +"\t" +"Màu sắc: " );
+            while (current != null) {
+                current.inThongTin();
+                current = current.next;
+            }
         }
     } 
 
     public void timTheoMa() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập mã táo cần tìm: ");
-        int ma = sc.nextInt();
-        Apple found = null;
-        for(Apple svdv : list){
-            if(svdv.getma()==ma){
-                found = svdv;  
+        int maTim = sc.nextInt();
+        // Apple found = null;
+        // for(Apple svdv : list){
+        //     if(svdv.getma()==ma){
+        //         found = svdv;  
+        //     }
+        // }
+        // if (found!=null) {
+        //     System.out.println("=====Danh sách táo cần tìm kiếm là=====");
+        //     found.inThongTin(); 
+        // } else {
+        //     System.out.println("Màu táo cần tìm không có trong danh sách!!!");
+        // }
+        Apple current = head;
+        while(current != null){
+            if(current.ma == maTim){
+                System.out.println("=====Danh sách mã táo cần tìm kiếm là=====");
+                current.inThongTin();
+                return;
             }
+            current = current.next;
         }
-        if (found!=null) {
-            System.out.println("=====Danh sách táo cần tìm kiếm là=====");
-            found.inThongTin(); 
-        } else {
-            System.out.println("Màu táo cần tìm không có trong danh sách!!!");
-        }
+        System.out.println("Mã táo cần tìm không có trong danh sách!!!");
         
     }
 
     public void timTheoKhoiLuong() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập khối táo cần tìm: ");
-        double khoiLuong = sc.nextDouble();
-        Apple found = null;
-        for(Apple svdv : list){
-            if(svdv.getkhoiLuong()==khoiLuong){
-                found = svdv;  
+        double khoiLuongTim = sc.nextDouble();
+        Apple current = head;
+        while(current != null){
+            if(current.khoiLuong == khoiLuongTim){
+                System.out.println("=====Danh sách khối lượng táo cần tìm kiếm là=====");
+                current.inThongTin();
+                return;
             }
+            current = current.next;
         }
-        if (found!=null) {
-            System.out.println("=====Danh sách táo cần tìm kiếm là=====");
-            found.inThongTin(); 
-        } else {
-            System.out.println("Khối lượng táo cần tìm không có trong danh sách!!!");
-        }
+        System.out.println("Khối lượng táo cần tìm không có trong danh sách!!!");
         
     }
 
     public void timTheoMau() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập màu táo cần tìm: ");
-        String mauSac = sc.nextLine();
-        Apple found = null;
-        for(Apple svdv : list){
-            if(svdv.getmauSac().equals(mauSac)){
-                found = svdv;  
+        String mauSacTim = sc.nextLine();
+        Apple current = head;
+        while(current != null){
+            if(current.mauSac == mauSacTim){
+                System.out.println("=====Danh sách màu táo cần tìm kiếm là=====");
+                current.inThongTin();
+                return;
             }
+            current = current.next;
         }
-        if (found!=null) {
-            System.out.println("=====Danh sách táo cần tìm kiếm là=====");
-            found.inThongTin(); 
-        } else {
-            System.out.println("Màu táo cần tìm không có trong danh sách!!!");
-        }
+        System.out.println("Màu táo cần tìm không có trong danh sách!!!");
         
     }   
 
@@ -273,7 +355,7 @@ public class BaiTap {
 
             switch(luaChon){
                 case 1:
-                     themTaoVaoKho();;
+                     themTaoVaoKho();
                      break;
                 case 2:
                      timTheoMa();
@@ -286,15 +368,19 @@ public class BaiTap {
                      break;
                 case 5:
                      selectionSort();
+                     xuat();
                      break;
                 case 6:
                      selectionSortGiam();
+                     xuat();
                      break;
                 case 7:
                      bubbleSort();
+                     xuat();
                      break;
                 case 8:
                      bubbleSortGiam();
+                     xuat();
                      break;
                 case 9:
                      intertionsort();
