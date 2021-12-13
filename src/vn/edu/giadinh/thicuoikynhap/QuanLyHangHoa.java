@@ -11,16 +11,13 @@ public class QuanLyHangHoa {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
     int n = 30;
     
-    public QuanLyHangHoa(){
-
-    }
-
+    public QuanLyHangHoa(){}
     // Hàm kiểm tra danh sách có rỗng hay không
     /* Nếu trả về empty = true thì danh sách rỗng
         và nếu trả về empty = false danh sách có dữ liệu
     */
     boolean isEmpty(){
-        boolean empty =true;
+        boolean empty = true;
         /* Kiểm tra node head có = null hay không 
                 nếu head == null thì trả về empty = true
                 nếu head != null thì trả về empty = false*/
@@ -52,7 +49,6 @@ public class QuanLyHangHoa {
             tail.next = newNode;
             tail  = newNode;            
         }
-        return;
     }
     // Hàm thêm vào đầu danh sách
     void addFirst(){
@@ -301,8 +297,6 @@ public class QuanLyHangHoa {
     // Hàm tìm theo loại hàng hóa
     void timTheoLoai(){
         Scanner sc = new Scanner(System.in);
-        // String loaiCanTim;
-
         System.out.print("Nhập loại hàng hóa cần tìm: ");
         String loaiCanTim = sc.nextLine();
         Node current = head;
@@ -452,11 +446,9 @@ public class QuanLyHangHoa {
     void bubbleSortTheoGiaTangDan() {
         Node current = head;
         Node index = null;
-        String tam1;
-        int tam2;
-        String tam3;
+        String tam1, tam3;
+        int tam2, tam5;
         double tam4;
-        int tam5;
         Date tam6;
         if (head == null) {
             System.out.println("- Danh sách rỗng.");
@@ -500,11 +492,9 @@ public class QuanLyHangHoa {
     void bubbleSortTheoGiaGiamDan() {
         Node current = head;
         Node index = null;
-        String tam1;
-        int tam2;
-        String tam3;
+        String tam1, tam3;
+        int tam2, tam5;
         double tam4;
-        int tam5;
         Date tam6;
         if (head == null) {
             System.out.println("- Danh sách rỗng.");
@@ -548,11 +538,9 @@ public class QuanLyHangHoa {
     void bubbleSortTheoNgayTangDan() {
         Node current = head;
         Node index = null;
-        String tam1;
-        int tam2;
-        String tam3;
+        String tam1, tam3;
+        int tam2, tam5;
         double tam4;
-        int tam5;
         Date tam6;
         if (head == null) {
             System.out.println("- Danh sách rỗng.");
@@ -597,11 +585,9 @@ public class QuanLyHangHoa {
     void bubbleSortTheoNgayGiamDan() {
         Node current = head;
         Node index = null;
-        String tam1;
-        int tam2;
-        String tam3;
+        String tam1, tam3;
+        int tam2, tam5;
         double tam4;
-        int tam5;
         Date tam6;
         if (head == null) {
             System.out.println("- Danh sách rỗng.");
@@ -642,71 +628,209 @@ public class QuanLyHangHoa {
             }
         }
     }
-
+    // Hàm sắp xếp tăng dần theo loại và theo giá kiểu BubbleSort
     void bubbleSortTheoLoaiVaTheoGiaTangDan() {
         Node current = head;
         Node index = null;
-        String tam = "Thực phẩm";
-        String tam1;
-        int tam2;
-        String tam3;
+        Scanner sc = new Scanner(System.in);
+        String tam, tam3;
+        int tam2, tam5;
         double tam4;
-        int tam5;
         Date tam6;
-        // if (current.data.loai==tam1) {
-            
-        
+        System.out.print("Nhập loại hàng hóa cần sắp xếp: ");
+        tam = sc.nextLine();
         if (head == null) {
             System.out.println("- Danh sách rỗng.");
         } else {
             while (current != null) {
                 index = current.next;
                 while (index != null) {
-                    if (current.data.loai.equals(tam)) {
-                        // current.data.inThongTin();
-                    
+                    if (current.data.loai.equals(tam)) {                   
                         if (current.data.giaNhap > index.data.giaNhap ) {
+                            // Sắp xếp loại hàng hóa
                             tam = current.data.loai;
                             current.data.loai = index.data.loai;
                             index.data.loai = tam;
-                            // // loại
-                            // tam = current.data.loai;
-                            // current.data.loai = index.data.loai;
-                            // index.data.loai = tam;
-                            // // mã
-                            // tam2 = current.data.id;
-                            // current.data.id = index.data.id;
-                            // index.data.id = tam2;
-                            // // tên
-                            // tam3 = current.data.tenHangHoa;
-                            // current.data.tenHangHoa = index.data.tenHangHoa;
-                            // index.data.tenHangHoa = tam3;
-                            // // giá nhập
-                            // tam4 = current.data.giaNhap;
-                            // current.data.giaNhap = index.data.giaNhap;
-                            // index.data.giaNhap = tam4;
-                            // // số lượng tồn kho
-                            // tam5 = current.data.soLuongTonKho;
-                            // current.data.soLuongTonKho = index.data.soLuongTonKho;
-                            // index.data.soLuongTonKho = tam5;
-                            // // ngày nhập kho
-                            // tam6 = current.data.ngayNhapKho;
-                            // current.data.ngayNhapKho = index.data.ngayNhapKho;
-                            // index.data.ngayNhapKho = tam6;
+                            // Sắp xếp id hàng hóa
+                            tam2 = current.data.id;
+                            current.data.id = index.data.id;
+                            index.data.id = tam2;
+                            // Sắp xếp tên hàng hóa
+                            tam3 = current.data.tenHangHoa;
+                            current.data.tenHangHoa = index.data.tenHangHoa;
+                            index.data.tenHangHoa = tam3;
+                            // Sắp xếp giá nhập khẩu
+                            tam4 = current.data.giaNhap;
+                            current.data.giaNhap = index.data.giaNhap;
+                            index.data.giaNhap = tam4;
+                            // Sắp xếp số lượng tồn kho
+                            tam5 = current.data.soLuongTonKho;
+                            current.data.soLuongTonKho = index.data.soLuongTonKho;
+                            index.data.soLuongTonKho = tam5;
+                            // Sắp xếp ngày nhập kho
+                            tam6 = current.data.ngayNhapKho;
+                            current.data.ngayNhapKho = index.data.ngayNhapKho;
+                            index.data.ngayNhapKho = tam6;                            
                         }
-                    // else if (current.data.loai != tam1) {
-                    //     index = index.next;
-                    // }
-                    // current.data.inThongTin();
-                }
-                
+                    }
                     index = index.next;
-
                 }
                 current = current.next;
             }
         }
-    // }
+    }
+    // Hàm sắp xếp giảm dần theo loại và theo giá kiểu BubbleSort
+    void bubbleSortTheoLoaiVaTheoGiaGiamDan() {
+        Node current = head;
+        Node index = null;
+        Scanner sc = new Scanner(System.in);
+        String tam, tam3;
+        int tam2, tam5;
+        double tam4;
+        Date tam6;
+        System.out.print("Nhập loại hàng hóa cần sắp xếp: ");
+        tam = sc.nextLine();
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            while (current != null) {
+                index = current.next;
+                while (index != null) {
+                    if (current.data.loai.equals(tam)) {                    
+                        if (current.data.giaNhap < index.data.giaNhap ) {
+                            // Sắp xếp loại hàng hóa
+                            tam = current.data.loai;
+                            current.data.loai = index.data.loai;
+                            index.data.loai = tam;
+                            // Sắp xếp id hàng hóa
+                            tam2 = current.data.id;
+                            current.data.id = index.data.id;
+                            index.data.id = tam2;
+                            // Sắp xếp tên hàng hóa
+                            tam3 = current.data.tenHangHoa;
+                            current.data.tenHangHoa = index.data.tenHangHoa;
+                            index.data.tenHangHoa = tam3;
+                            // Sắp xếp giá nhập khẩu
+                            tam4 = current.data.giaNhap;
+                            current.data.giaNhap = index.data.giaNhap;
+                            index.data.giaNhap = tam4;
+                            // Sắp xếp số lượng tồn kho
+                            tam5 = current.data.soLuongTonKho;
+                            current.data.soLuongTonKho = index.data.soLuongTonKho;
+                            index.data.soLuongTonKho = tam5;
+                            // Sắp xếp ngày nhập kho
+                            tam6 = current.data.ngayNhapKho;
+                            current.data.ngayNhapKho = index.data.ngayNhapKho;
+                            index.data.ngayNhapKho = tam6;
+                        }
+                    }
+                    index = index.next;
+                }
+                current = current.next;
+            }
+        }
+    }
+    // Hàm sắp xếp tăng dần theo loại và theo ngày kiểu BubbleSort
+    void bubbleSortTheoLoaiVaTheoNgayTangDan() {
+        Node current = head;
+        Node index = null;
+        Scanner sc = new Scanner(System.in);
+        String tam, tam3;
+        int tam2, tam5;
+        double tam4;
+        Date tam6;
+        System.out.print("Nhập loại hàng hóa cần sắp xếp: ");
+        tam = sc.nextLine();
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            while (current != null) {
+                index = current.next;
+                while (index != null) {
+                    if (current.data.loai.equals(tam)) {                    
+                        if (current.data.ngayNhapKho.compareTo(index.data.ngayNhapKho) == 1) {
+                            // Sắp xếp loại hàng hóa
+                            tam = current.data.loai;
+                            current.data.loai = index.data.loai;
+                            index.data.loai = tam;
+                            // Sắp xếp id hàng hóa
+                            tam2 = current.data.id;
+                            current.data.id = index.data.id;
+                            index.data.id = tam2;
+                            // Sắp xếp tên hàng hóa
+                            tam3 = current.data.tenHangHoa;
+                            current.data.tenHangHoa = index.data.tenHangHoa;
+                            index.data.tenHangHoa = tam3;
+                            // Sắp xếp giá nhập khẩu
+                            tam4 = current.data.giaNhap;
+                            current.data.giaNhap = index.data.giaNhap;
+                            index.data.giaNhap = tam4;
+                            // Sắp xếp số lượng tồn kho
+                            tam5 = current.data.soLuongTonKho;
+                            current.data.soLuongTonKho = index.data.soLuongTonKho;
+                            index.data.soLuongTonKho = tam5;
+                            // Sắp xếp ngày nhập kho
+                            tam6 = current.data.ngayNhapKho;
+                            current.data.ngayNhapKho = index.data.ngayNhapKho;
+                            index.data.ngayNhapKho = tam6;
+                        }
+                    }
+                    index = index.next;
+                }
+                current = current.next;
+            }
+        }
+    }
+    // Hàm sắp xếp giảm dần theo loại và theo ngày kiểu BubbleSort
+    void bubbleSortTheoLoaiVaTheoNgayGiamDan() {
+        Node current = head;
+        Node index = null;
+        Scanner sc = new Scanner(System.in);
+        String tam, tam3;
+        int tam2, tam5;
+        double tam4;
+        Date tam6;
+        System.out.print("Nhập loại hàng hóa cần sắp xếp: ");
+        tam = sc.nextLine();
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            while (current != null) {
+                index = current.next;
+                while (index != null) {
+                    if (current.data.loai.equals(tam)) {                    
+                        if (current.data.ngayNhapKho.compareTo(index.data.ngayNhapKho) == -1) {
+                            // Sắp xếp loại hàng hóa
+                            tam = current.data.loai;
+                            current.data.loai = index.data.loai;
+                            index.data.loai = tam;
+                            // Sắp xếp id hàng hóa
+                            tam2 = current.data.id;
+                            current.data.id = index.data.id;
+                            index.data.id = tam2;
+                            // Sắp xếp tên hàng hóa
+                            tam3 = current.data.tenHangHoa;
+                            current.data.tenHangHoa = index.data.tenHangHoa;
+                            index.data.tenHangHoa = tam3;
+                            // Sắp xếp giá nhập khẩu
+                            tam4 = current.data.giaNhap;
+                            current.data.giaNhap = index.data.giaNhap;
+                            index.data.giaNhap = tam4;
+                            // Sắp xếp số lượng tồn kho
+                            tam5 = current.data.soLuongTonKho;
+                            current.data.soLuongTonKho = index.data.soLuongTonKho;
+                            index.data.soLuongTonKho = tam5;
+                            // Sắp xếp ngày nhập kho
+                            tam6 = current.data.ngayNhapKho;
+                            current.data.ngayNhapKho = index.data.ngayNhapKho;
+                            index.data.ngayNhapKho = tam6;
+                        }
+                    }
+                    index = index.next;
+                }
+                current = current.next;
+            }
+        }
     }
 
     void thongKe(){
@@ -888,9 +1012,9 @@ void menu(){
                     do {
                         System.out.println("+ + + + + + + + + + + MENU TÌM KIẾM HÀNG HÓA  + + + + + + + + + + + +");
                         System.out.println("+                                                                   +");
-                        System.out.println("+   >> 1: Tìm kiếm hàng hóa theo loại.                              +");
-                        System.out.println("+   >> 2: Tìm kiếm hàng hóa theo một giá nhất định.                 +");
-                        System.out.println("+   >> 3: Tìm kiếm hàng hóa theo khoản giá.                         +");
+                        System.out.println("+   >> 1: Tìm kiếm hàng hóa theo loại hàng hóa.                     +");
+                        System.out.println("+   >> 2: Tìm kiếm hàng hóa theo một giá nhập khẩu nhất định.       +");
+                        System.out.println("+   >> 3: Tìm kiếm hàng hóa theo khoản giá nhập khẩu.               +");
                         System.out.println("+   >> 4: Tìm kiếm hàng hóa theo ngày nhập kho.                     +");
                         System.out.println("+   >> 5: Tìm kiếm hàng hóa theo ngày nhập kho từ ngày đến ngày.    +");
                         System.out.println("+   >> 0: Thoát Menu tìm kiếm hàng hóa.                             +");
@@ -933,15 +1057,19 @@ void menu(){
 
                 case 5:
                     do {
-                        System.out.println("+ + + + + + + + +  MENU SẮP XẾP HÀNG HÓA  + + + + + + + + +");
-                        System.out.println("+                                                         +");
-                        System.out.println("+   >> 1: Sắp xếp hàng hóa tăng dần theo giá.             +");
-                        System.out.println("+   >> 2: Sắp xếp hàng hóa giảm dần theo giá.             +");
-                        System.out.println("+   >> 3: Sắp xếp hàng hóa tăng dần theo ngày nhập kho.   +");
-                        System.out.println("+   >> 4: Sắp xếp hàng hóa giảm dần theo ngày nhập kho.   +");
-                        System.out.println("+   >> 0: Thoát Menu sắp xếp hàng hóa.                    +");
-                        System.out.println("+                                                         +");
-                        System.out.println("+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + +");
+                        System.out.println("+ + + + + + + + + + + + + + + MENU SẮP XẾP HÀNG HÓA + + + + + + + + + + + + + + +");
+                        System.out.println("+                                                                               +");
+                        System.out.println("+   >> 1: Sắp xếp hàng hóa tăng dần theo giá hàng hóa.                          +");
+                        System.out.println("+   >> 2: Sắp xếp hàng hóa giảm dần theo giá hàng hóa.                          +");
+                        System.out.println("+   >> 3: Sắp xếp hàng hóa tăng dần theo ngày nhập kho.                         +");
+                        System.out.println("+   >> 4: Sắp xếp hàng hóa giảm dần theo ngày nhập kho.                         +");
+                        System.out.println("+   >> 5: Sắp xếp hàng hóa tăng dần theo loại hàng hóa và theo giá nhập khẩu.   +");
+                        System.out.println("+   >> 6: Sắp xếp hàng hóa giảm dần theo loại hàng hóa và theo giá nhập khẩu.   +");
+                        System.out.println("+   >> 7: Sắp xếp hàng hóa tăng dần theo loại hàng hóa và theo ngày nhập kho.   +");
+                        System.out.println("+   >> 8: Sắp xếp hàng hóa giảm dần theo loại hàng hóa và theo ngày nhập kho.   +");
+                        System.out.println("+   >> 0: Thoát Menu sắp xếp hàng hóa.                                          +");
+                        System.out.println("+                                                                               +");
+                        System.out.println("+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +");
                     
                         System.out.print("- Nhập vào sựa lựa chọn: ");
                         key = sc.nextInt();
@@ -964,6 +1092,26 @@ void menu(){
                                 break;
                             case 4:
                                 bubbleSortTheoNgayGiamDan();
+                                System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI SẮP XẾP ==========");
+                                print();
+                                break;
+                            case 5:
+                                bubbleSortTheoLoaiVaTheoGiaTangDan();
+                                System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI SẮP XẾP ==========");
+                                print();
+                                break;
+                            case 6:
+                                bubbleSortTheoLoaiVaTheoGiaGiamDan();
+                                System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI SẮP XẾP ==========");
+                                print();
+                                break;
+                            case 7:
+                                bubbleSortTheoLoaiVaTheoNgayTangDan();
+                                System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI SẮP XẾP ==========");
+                                print();
+                                break;
+                            case 8:
+                                bubbleSortTheoLoaiVaTheoNgayGiamDan();
                                 System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI SẮP XẾP ==========");
                                 print();
                                 break;
@@ -992,5 +1140,6 @@ void menu(){
 
     }
 }
+
 
 
