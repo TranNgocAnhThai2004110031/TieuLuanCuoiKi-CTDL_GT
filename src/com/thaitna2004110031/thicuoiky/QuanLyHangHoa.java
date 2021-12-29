@@ -1,18 +1,26 @@
 package com.thaitna2004110031.thicuoiky;
 
 import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class QuanLyHangHoa {
     Node head = null;
     Node tail = null;
     KhoHang khoHang;
-    Scanner sc = new Scanner(System.in);
-    public QuanLyHangHoa(){
-
-    }
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
+    int n = 30; // n= 30 vì kho hàng có 30 dữ liệu mồi
+    
+    public QuanLyHangHoa(){}
+    // Hàm kiểm tra danh sách có rỗng hay không
+    /* Nếu trả về empty = true thì danh sách rỗng
+        và nếu trả về empty = false danh sách có dữ liệu
+    */
     boolean isEmpty(){
-        boolean empty =true;
+        boolean empty = true;
+        /* Kiểm tra node head có = null hay không 
+                nếu head == null thì trả về empty = true
+                nếu head != null thì trả về empty = false*/
         if (head == null) {
             empty = true;
         } else {
@@ -21,475 +29,867 @@ public class QuanLyHangHoa {
         return empty;
     }
 
-    public void add(String loai, int maHang, String tenHangHoa, double giaNhap, int soLuongTonKho){ //, Date ngayNhapKho
-        KhoHang khoHang = new KhoHang(loai, maHang, tenHangHoa, giaNhap, soLuongTonKho);
-        Node newNode = new Node(khoHang); 
-        if (head==null) {
+    // Hàm mồi
+    void add(String loai, int id, String tenHangHoa, double giaNhap, int soLuongTonKho,String ngay){
+        Date ngayNhapKho;
+        // Chuyển chuỗi ký tự thành kiểu dữ liệu Date
+        try{
+            ngayNhapKho = simpleDateFormat.parse(ngay);
+
+        } catch (Exception e) {
+        }
+        KhoHang khoHang = new KhoHang(loai, id, tenHangHoa, giaNhap, soLuongTonKho, ngay);
+        Node newNode  = new Node(khoHang);
+        /* Nếu danh sách rỗng thì gán Node mới vào Node đầu và Node cuối của danh sách liên kết
+            và nếu danh sách khác tập rỗng thì thêm Node mới vào cuối danh sách*/
+        if (isEmpty() == true) {
             head = newNode;
             tail = newNode;
         }else{
             tail.next = newNode;
             tail  = newNode;            
         }
-        return;
     }
-    
-    public void themDau(){
+    // Hàm thêm vào đầu danh sách
+    void addFirst(){
         KhoHang khoHang = new KhoHang();
         Node newNode = new Node(khoHang);
-        newNode.data.nhap();
-        if (isEmpty()==true) {
+        newNode.data.nhapThongTin();
+        /* Nếu danh sách rỗng thì gán Node mới vào Node đầu và node cuối của danh sách liên kết
+            và nếu danh sách khác tập rỗng thì thêm Node mới vào trước Node head*/
+        if (isEmpty() == true) {
             head = newNode;
             tail = newNode;
         }else{
             newNode.next = head;
-            head  = newNode;            
+            head = newNode;            
         }
     }
-    //thêm cuối
-
-    public void themCuoi(){
+    // Hàm thêm vào cuối danh sách
+    void addLast(){
         KhoHang khoHang = new KhoHang();
         Node newNode = new Node(khoHang);
-        newNode.data.nhap();
-        if (isEmpty()==true) {
+        newNode.data.nhapThongTin();
+        /* Nếu danh sách rỗng thì gán Node mới vào Node đầu và Node cuối của danh sách liên kết
+            và nếu danh sách khác tập rỗng thì thêm node mới vào cuối danh sách liên kết*/
+        if (isEmpty() == true) {
             head = newNode;
             tail = newNode;
         }else{
             tail.next = newNode;
-            tail  = newNode;            
+            tail = newNode;            
         }
     }
-    //tìm theo mã
-    Node timTheoMa(int ma) {
+
+    Node searchID(int idCanTim) {
         Node node = null;
-        if (isEmpty()) {
-            System.out.println("List is empty!");
+        // Kiểm tra danh sách liên kiết có rỗng hay không nếu danh sách rỗng thì in ra danh dách rỗng.
+         
+        if (isEmpty() == true) {
+            System.out.println("Danh sách rỗng!!!");
         } else {
             Node current;
             current = head;
-            while (current!=null) {
-                if (current.data.maHang == ma) {
+            while (current !=null ) {
+                /* Nếu dữ liệu id của Node current bằng với id cần tìm 
+                    thì gán Node current vào Node node và trả về giá trị Node node và kết thúc vòng lặp.*/
+                if (current.data.id == idCanTim) {
                     node = current;
+                    return node;
                 }
                 current = current.next;
             }
-        }
-        return node;
-    }
-    //thêm vào trướcmã
-    public void themTruocMa() {
-        // Node node = null;
-        KhoHang khoHang = new KhoHang();
-        Node preNode = null;
-        Node current = head;
-        System.out.print("Nhập mã hàng hóa cần thêm trước: ");
-        int maHang = sc.nextInt();
-                        
-        if (isEmpty()==false) {
-            if (head.data.maHang == maHang) {
-                themDau();
-                return;
-            }
-            while (current != null) {
-                preNode = current;
-                if (current.data.maHang == maHang) {//node == current
-                   Node newNode = new Node(khoHang);
-                   newNode.data.nhap();
-                   preNode.next = newNode;
-                   newNode.next = current;
-                   return;
-                }
-                current = current.next;
-                return;
-            }
-        }else{
-            System.out.println("Danh sách rỗng!!!");
-        }
-        
-    } 
-    public void addPreNode2(){
-
-        // Node node = null;
-         KhoHang khoHang = new KhoHang();
-         Node preNode;
-         Scanner sc= new Scanner(System.in);
-         System.out.print("nhap id: ");
-         int id = sc.nextInt();
-         if (isEmpty()==false) {
-             
-             Node current;
-             current = head;
- 
-             if(head.data.maHang == id){
-                 themDau();
-                 return;
-             }
-             
-             while(current != null){
-                 preNode = current;
-                 //ddang tim
-                 if(current.data.maHang == id){
-                    Node newNode = new Node(khoHang);//nust moi
-                    newNode.data.nhap();
-                    preNode.next = newNode;
-                    newNode.next = current;
-                    return;
-                 }
-                 current = current.next;
-
-             }
-            //  return;
- 
-         } else {
-             System.out.println("List is empty!");            
-         }
-     }
-    public void addPreNode(){
-
-        // Node node = null;
-
-        KhoHang khoHang = new KhoHang();
-        Node preNode;
-        System.out.print("Nhập mã hàng hóa cần thêm trước: ");
-        int ma = sc.nextInt(); 
-         if (isEmpty()) {
-             System.out.println("List is empty!");
-         } else {
- 
-             Node current;
-             current = head;
- 
-             if(head.data.maHang == ma){
-                themDau();
-             }
-             
-             while(current.next != null){
- 
-                 preNode = current;
-                 //ddang tim
-                 if(current.data.maHang == ma){
-                     //node = current;
- 
-                     Node newNode = new Node(khoHang);
-                     newNode.data.nhap();
-                     preNode.next = newNode;
-                     newNode.next = current;
-                 }
-                 current = current.next;
-             }
- 
-         }
-     }
-    // void Xoa(int Id) {
-    //     if (true == tim(Id)) {
-    //         if (current == head) {
-    //             xoaHead();
-    //         } else if (current == tail) {
-    //             xoaTail();
-    //         } else {
-    //             xoaGiua();
-    //         }
-    //     } else {
-    //         System.out.println("Không tìm thấy");
-    //     }
-    // }
-    Node find(int key) { // Hàm tìm kiếm một phần tử có trong linkedlist không 
-        Node current = head;
-        if(head.data.maHang == key){
-            return head;
-        }
-        while (current != null) {
-            if (key == current.next.data.maHang)
-                return current;
-            current = current.next;
+            
         }
         return null;
     }
 
-    public void addPreivous(){
-        KhoHang book = new KhoHang();
-        Node NewBook = new Node(book);
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Nhập mã hàng hóa cần thêm trước: ");
-        int key = sc.nextInt();
-        if(find(key) == null){
+    //Hàm thêm sau id hàng hóa
+    void addBehindNode() {
+        KhoHang khoHang = new KhoHang();
+        
+        Scanner sc= new Scanner(System.in);
+
+        System.out.print("Nhập ID hàng hóa cần thêm sau: ");
+        int iD = sc.nextInt();
+        Node preNode = searchID(iD);
+        Node current = head;
+
+        if(preNode == null){
+            System.out.println("- ID hàng hóa cần thêm không có trong danh sách!");
             return;
         }
-        Node temp = find(NewBook.data.maHang);
-            
-        NewBook.data.nhap();
-        NewBook.next = temp.next;
-        temp.next = NewBook;
+        while (current != null) {
+            current = current.next;
+            /** Nêu giá trị của Node current bằng với giá trị của Node preNode
+             *  thì Node current sẽ duyệt thêm 1 lần và Node preNode sẽ trỏ đến Node newNode
+             *  sau dó Node newNode sẽ trỏ đến Node current vừa mới được duyệt*/
+            if (current == preNode) {
+                Node newNode = new Node(khoHang);
+                newNode.data.nhapThongTin();
+                current = current.next;
+                preNode.next = newNode;
+                newNode.next = current;
+                return;
+            }
+        }         
     }
-    public void xoaDau() { //Hàm xoá đầu
-        if(head == null){
+
+    // Hàm thêm trước id hàng hóa
+    void addFrontNode() {
+        KhoHang khoHang = new KhoHang();
+        
+        Scanner sc= new Scanner(System.in);
+
+        System.out.print("Nhập ID hàng hóa cần thêm trước: ");
+        int iD = sc.nextInt();
+        Node preNode = searchID(iD);
+        Node current = this.head;
+
+        if(preNode == null){
+            System.out.println("- ID hàng hóa cần thêm không có trong danh sách!");
+            return;
+        }
+        // Nếu id của Node head bằng id cần tìm thì sẽ thêm Node mới vào đầu danh sách
+        if (head.data.id == iD) {
+            addFirst();
+        }
+        while (current != null) { // && !current.next.data.equals(iD) 
+            /** Nêu giá trị của Node current trỏ đến bằng với giá trị của Node preNode
+             *  thì Node current sẽ trỏ đến Node newNode 
+             *  sau dó Node newNode sẽ trỏ đến Node preNode*/           
+            if (current.next == preNode) {
+                Node newNode = new Node(khoHang);
+                newNode.data.nhapThongTin();
+                current.next = newNode;
+                newNode.next = preNode;
+                return;
+            }
+            current = current.next;            
+        }
+    }
+    // Hàm thêm vào vị trí
+    void addAtk() {
+        Scanner sc = new Scanner(System.in);
+        KhoHang khoHang = new KhoHang();
+
+        System.out.print("Nhập vị trí cần thêm: ");
+        int k = sc.nextInt();
+        /** Nếu danh sách rỗng hoặc vị trí k <= 1 thì Node mới sẽ được thêm vào đầu danh sách liên kết.
+         *  Nếu vị trí k >= n thì Node mới sẽ được thêm vào cuối danh sách liên kết.*/
+        if (isEmpty() == true || k <= 1) {
+            addFirst();
+        } else if (k>=n) {
+            addLast();
+        } else {
+            Node preNode = new Node();
+            Node q = new Node();
+            Node current = head;
+            Node newNode = new Node(khoHang);
+            newNode.data.nhapThongTin();
+            int dem = 0;
+            /** Sử dụng vòng lặp để duyệt từng phần tử trong danh sách liên kết 
+             *  với mỗi lần lặp sẽ tăng biến dem thêm 1 đơn vị và gán giá trị Node current vào Node preNode
+             *  nếu giá trị biến dem bắng giá trị biến k + 1 thì thoát khỏi vòng lặp.*/
+            while (current != null) {
+                dem++;
+                preNode = current;
+                if (dem == k) {
+                    break;
+                }
+                current=current.next;
+            }
+            q = head;
+            /** Sử dụng vòng lặp để duyệt từng phần tử trong danh sách liên kết.
+             *  Sau khi kết thúc vòng lặp Node q sẽ trỏ đến Node newNode, 
+             *  sau dó Node newNode sẽ trỏ đến Node current.*/
+            while (q.next != preNode) { 
+                q = q.next;
+            }
+            q.next = newNode;
+            newNode.next = current;
+        }
+    }
+    // Hàm xoá đầu
+    void removeFirst() { 
+        if(isEmpty() == true){
             System.out.println("Danh sách rỗng!");
             return;
         }
+        // Giá trị của Node được Node head trỏ đến sẽ được gán vào Node head.
         head = head.next;
     }
-
-    void xoaCuoi(){
+    // Hàm xoá cuối
+    void removeLast(){
         if (isEmpty()) {
-            
+            System.out.println("- Danh sách rỗng!!!");
         }
-        Node temp;
-        temp = head;
-        while (temp !=null) {
-           if (temp.next == tail) {
-               tail = temp;
+        Node current = head;
+        while (current !=null) {
+            // Nếu Node current trỏ đến Node tail thì Node current sẽ gán vào Node tail và Node tail sẽ trỏ đến Node rỗng.
+           if (current.next == tail) {
+               tail = current;
                tail.next = null;
            } 
-           temp = temp.next;
+           current = current.next;
         }
     }
-
-    public void xoaTheoMa() {
-        Node node = null;
-        Node preNode;
+    // Hàm xóa theo id hàng hóa
+    void removeTheoMa() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Nhập mã hàng hóa cần xóa trước: ");
-        int ma = sc.nextInt();
-        if (head.data.maHang==ma) {
-            xoaDau();
+        System.out.print("Nhập ID hàng hóa cần xóa: ");
+        int iD = sc.nextInt();
+
+        Node preNode = searchID(iD);
+
+        if(preNode == null){
+            System.out.println("- ID hàng hóa cần xóa không có trong danh sách!");
+            return;
         }
-        Node current;
-        current = head;
-        while (current.next != null) {
-            preNode = current;
-            if (current.data.maHang == ma) {
-                
-                preNode.next = current.next.next;
-                
+        // Nếu giá trị của Node head bằng giá trị của Node preNode thì sẽ thực hiện hàm xóa đầu.
+        if (head == preNode) { 
+            removeFirst();
+        } else if (tail == preNode) { // Nếu giá trị của Node tail bằng giá trị của Node preNode thì sẽ thực hiện hàm xóa cuối.
+            removeLast();
+        }else{
+            Node current;
+
+            current = head;
+            while (current.next != null) {
+                /**  Nếu Node current trỏ đến Node preNode 
+                *    thì giá trị Node current trỏ đến sẽ được gán bởi giá trị của Node current trỏ đến tiếp theo.*/
+                if (current.next == preNode) {
+                    current.next = current.next.next;           
+                }
+                current = current.next;
+            }
+        }
+    }
+    // Hàm sửa thông tin theo id hàng hóa
+    void set() {
+        KhoHang khoHang = new KhoHang();
+        
+        Scanner sc= new Scanner(System.in);
+
+        System.out.print("Nhập ID hàng hóa cần sửa thông tin: ");
+        int iD = sc.nextInt();
+
+        Node preNode = searchID(iD);
+        Node current = head; 
+
+        if(preNode == null){
+            System.out.println("- ID hàng hóa cần sửa thông tin không có trong danh sách!");
+            return;
+        }
+        while (current != null) {
+            /** Nếu Node current trỏ đến Node preNode thì Node preNode sẽ được gán bởi Node newNode
+             *  và giá trị mà Node newNode trỏ đến sẽ được gán giá trị mà Node preNode trỏ đến.*/
+            if (current.next == preNode) {
+                Node newNode = new Node(khoHang);
+                current.next = newNode;                
+                newNode.data.nhapThongTin();
+                newNode.next = preNode.next;
             }
             current = current.next;
         }
-    }
-    void loai(String loaiCanTim){
+        System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI SỬA ==========");
+        print();
         
     }
-    void timTheoLoai(){
+    // Hàm tìm theo loại
+    boolean searchLoai(String key){
+        Node current = head;
+        boolean result = false;
+        while (current != null) {
+            /** Nếu chuỗi ký tự hàm loại của Node current bằng với chuỗi ký tự của key 
+            *    thì sẽ thực hiện in thông tin của Node current và trả về giá trị true cho result .*/
+            if (current.data.loai.equals(key)) {
+                current.data.inThongTin();
+                result = true;
+            }
+            current = current.next;
+        }
+        return result;
+    }
+    // Hàm thực thi chức năng tìm theo loại
+    void checkSearchLoai(){
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập loại hàng hóa cần tìm: ");
         String loaiCanTim = sc.nextLine();
+        if (false == searchLoai(loaiCanTim)) {
+            System.out.println("- Loại hàng hóa cần tìm không có trong danh sách!!!");
+        }
+    }
+    // Hàm tìm theo giá nhập khẩu
+    boolean searchGia(double key){
         Node current = head;
-        while(current != null){
-            if(current.data.loai.equals(loaiCanTim)){
-                System.out.println("Loại hàng hóa cần tìm cần tìm: ");
-                current.data.inThongTin();               
+        boolean result = false;
+        while (current != null) {
+            /** Nếu giá trị hàm giaNhap của Node current bằng với giá của key 
+            *    thì sẽ thực hiện in thông tin của Node current và trả về giá trị true cho result .*/
+            if (current.data.giaNhap == key) {
+                current.data.inThongTin();
+                result = true;
             }
             current = current.next;
         }
-        System.out.println("Không có loại hàng hóa cần tìm.");
+        return result;
     }
-
-    void timTheoGia(){
+    // Hàm thực thi chức năng tìm theo giá nhập khẩu
+    void checkSearchGia(){
         Scanner sc = new Scanner(System.in);
-        System.out.print("Nhập giá hàng hóa cần tìm: ");
+        System.out.print("Nhập giá nhập khẩu của hàng hóa cần tìm: ");
         double giaCanTim = sc.nextDouble();
+        if (false == searchGia(giaCanTim)) {
+            System.out.println("- Giá nhập khẩu của hàng hóa cần tìm không có trong danh sách!!!");
+        } 
+    }
+    // Hàm tìm kiếm giá nhập khẩu theo giá từ ... đến giá 
+    boolean searchGiaKhoan(double key1, double key2){
         Node current = head;
-        while(current != null){
-            if(current.data.giaNhap == giaCanTim){
-                System.out.println("Giá hàng hóa cần tìm cần tìm: ");
-                current.data.inThongTin();                
+        boolean result = false;
+        while (current != null) {
+            /** Nếu giá trị hàm giaNhap của Node current lớn hơn hoặc bằng key1 và bé hơn hoặc bằng key2
+            *    thì sẽ thực hiện in thông tin của Node current và trả về giá trị true cho result .*/
+            if (key1 <= current.data.giaNhap && current.data.giaNhap <= key2) {
+                current.data.inThongTin();
+                result = true;
             }
             current = current.next;
         }
-        System.out.println("Không có giá hàng hóa cần tìm.");
+        return result;
     }
-
-    void timTheoGiaKhoan(){
+    // Hàm thực thi chức năng searchGiaKhoan
+    void checkSearchGiaKhoan(){
         Scanner sc = new Scanner(System.in);       
         System.out.println("Nhập giá hàng hóa cần tìm");
         System.out.print("Giá từ: ");
-        double giaBe = sc.nextDouble();
+        double giaNho = sc.nextDouble();
         System.out.print("Đến giá: ");
         double giaLon = sc.nextDouble();
+        if (false == searchGiaKhoan(giaNho, giaLon)) {
+            System.out.println("- Giá nhập khẩu của hàng hóa cần tìm không có trong danh sách!!!");
+        }       
+    }
+    // Hàm tìm theo ngày nhập kho 
+    boolean searchNgay(Date key){
         Node current = head;
-        System.out.println("Giá hàng hóa cần tìm: ");
-        while(current != null){
-            if(giaBe <= current.data.giaNhap && current.data.giaNhap <= giaLon){                
+        boolean result = false;
+        while (current != null) {
+            /** Nếu ngày nhập kho của Node current trừ cho ngày nhập key bằng 0 (ngày nhập kho = key)
+            *    thì sẽ thực hiện in thông tin của Node current và trả về giá trị true cho result .*/
+            if (current.data.ngayNhapKho.compareTo(key) == 0) {//current.data.ngayNhapKho.compareTo(key) == 0
                 current.data.inThongTin();
+                result = true;
             }
             current = current.next;
         }
-        System.out.println("Không có giá hàng hóa cần tìm.");
+        return result;
     }
-    public boolean tim() {
+    // Hàm thực thi chức năng searchNgay
+    void checkSearchNgay(){
         Scanner sc = new Scanner(System.in);
-        System.out.print("Nhập mã hàng hóa cần sửa: ");
-        int ma = sc.nextInt();
-        if (head.data.maHang==ma) {
-            return true;
-        }
-        Node cur = head;
-        while (cur.next != null) {
-            cur = cur.next;
-        }
-        if (cur.next == null)
-            return false;
-        Node newNode = new Node(khoHang);
-        newNode = cur;
-        newNode = newNode.next;
-        return true;
-    }
+        Date ngay = null;
+             
+        System.out.print("Nhập ngày nhập hàng hóa cần tìm: ");
+        // Chuyển kiểu chuỗi ký tự sang kiểu Date.
+        try {
+            ngay = simpleDateFormat.parse(sc.nextLine());
 
-    public void sua() {
-        tim();
-        if (tim()==true) {
-            Node cur = head;
-            while (cur.next != null) {
-                cur = cur.next;
+        } catch (Exception e) {
+        }
+        if (false == searchNgay(ngay)) {
+            System.out.println("- Ngày nhập kho của hàng hóa cần tìm không có trong danh sách!!!");
+        } 
+        
+    }
+    // Hàm tìm theo ngày nhập kho từ ngày ... đến ngày ...
+    boolean searchNgayKhoan(Date key1, Date key2){
+        Node current = head;
+        boolean result = false;
+        while (current != null) {
+            /** Nếu ngày nhập kho của Node current trừ cho ngày nhập key1 bằng 0 hoặc bằng 1(ngày nhập kho = key1 hoặc > key1)
+            *    và ngày nhập kho của Node current trừ cho ngày nhập key2 bằng 0 hoặc bằng -1(ngày nhập kho = key2 hoặc < key2)  
+            *    thì sẽ thực hiện in thông tin của Node current và trả về giá trị true cho result .*/
+            if ((current.data.ngayNhapKho.compareTo(key1) == 1 || current.data.ngayNhapKho.compareTo(key1) == 0) 
+            && (current.data.ngayNhapKho.compareTo(key2) == -1 || current.data.ngayNhapKho.compareTo(key2) == 0)) {
+                current.data.inThongTin();
+                result = true;
             }
-            Node newNode = new Node(khoHang);
-            newNode = cur;
-            newNode = newNode.next;
-            } else {
-                System.out.println("Không tìm thấy mã hàng hóa!!!");
+            current = current.next;
+        }
+        return result;
+    }
+    // Hàm thực thi chức năng của hàm searchNgayKhoan
+    void checkSearchNgayKhoan(){
+        Date ngayTruoc = null;
+        Date ngaySau = null;
+        Scanner sc = new Scanner(System.in);    
+        System.out.println("Nhập ngày nhập hàng hóa cần tìm ");
+        System.out.print("Ngày từ: ");
+        // Chuyển kiểu chuỗi ký tự sang kiểu Date.
+        try {
+            ngayTruoc = simpleDateFormat.parse(sc.nextLine());
+
+        } catch (Exception e) {
+        }
+        System.out.print("Đến ngày: ");
+        try {
+            ngaySau = simpleDateFormat.parse(sc.nextLine());
+
+        } catch (Exception e) {
+        }
+
+        if (false == searchNgayKhoan(ngayTruoc, ngaySau)) {
+            System.out.println("- Ngày nhập kho của hàng hóa cần tìm không có trong danh sách!!!");
+        }
+    }
+    // Sắp xếp tăng dần theo giá kiểu BubbleSort
+    void bubbleSortTheoGiaTangDan() {
+        Node current = head;
+        Node index = null;
+        String tam1, tam3;
+        int tam2, tam5;
+        double tam4;
+        Date tam6;
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            while (current != null) {
+                index = current.next;
+                while (index != null) {
+                    if (current.data.giaNhap > index.data.giaNhap) {
+                        // Sắp xếp loại hàng hóa
+                        tam1 = current.data.loai;
+                        current.data.loai = index.data.loai;
+                        index.data.loai = tam1;
+                        // Sắp xếp id hàng hóa
+                        tam2 = current.data.id;
+                        current.data.id = index.data.id;
+                        index.data.id = tam2;
+                        // Sắp xếp tên hàng hóa
+                        tam3 = current.data.tenHangHoa;
+                        current.data.tenHangHoa = index.data.tenHangHoa;
+                        index.data.tenHangHoa = tam3;
+                        // Sắp xếp giá nhập 
+                        tam4 = index.data.giaNhap;
+                        index.data.giaNhap = current.data.giaNhap;
+                        current.data.giaNhap = tam4;
+                        // Sắp xếp số lượng tồn kho
+                        tam5 = current.data.soLuongTonKho;
+                        current.data.soLuongTonKho = index.data.soLuongTonKho;
+                        index.data.soLuongTonKho = tam5;
+                        // Sắp xếp ngày nhập kho
+                        tam6 = current.data.ngayNhapKho;
+                        current.data.ngayNhapKho = index.data.ngayNhapKho;
+                        index.data.ngayNhapKho = tam6;
+                    }
+                    index = index.next;
+                }
+                current = current.next;
             }
         }
-        void bubbleSortTheoGiaTangDan() {
-            Node current = head;
-            Node index = null;
-            String tam1;
-            int tam2;
-            String tam3;
-            double tam4;
-            int tam5;
-            Date tam6;
-            if (head == null) {
-                System.out.println("- Danh sách rỗng.");
-            } else {
-                while (current != null) {
-                    index = current.next;
-                    while (index != null) {
-                        if (current.data.giaNhap > index.data.giaNhap) {
-                            // loại
-                            tam1 = current.data.loai;
+        System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI SẮP XẾP ==========");
+        print();
+    }
+    // Sắp xếp giảm dần theo giá kiểu BubbleSort
+    void bubbleSortTheoGiaGiamDan() {
+        Node current = head;
+        Node index = null;
+        String tam1, tam3;
+        int tam2, tam5;
+        double tam4;
+        Date tam6;
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            while (current != null) {
+                index = current.next;
+                while (index != null) {
+                    if (current.data.giaNhap < index.data.giaNhap) {
+                        // Sắp xếp loại hàng hóa
+                        tam1 = current.data.loai;
+                        current.data.loai = index.data.loai;
+                        index.data.loai = tam1;
+                        // Sắp xếp id hàng hóa
+                        tam2 = current.data.id;
+                        current.data.id = index.data.id;
+                        index.data.id = tam2;
+                        // Sắp xếp tên hàng hóa
+                        tam3 = current.data.tenHangHoa;
+                        current.data.tenHangHoa = index.data.tenHangHoa;
+                        index.data.tenHangHoa = tam3;
+                        // Sắp xếp giá nhập 
+                        tam4 = index.data.giaNhap;
+                        index.data.giaNhap = current.data.giaNhap;
+                        current.data.giaNhap = tam4;
+                        // Sắp xếp số lượng tồn kho
+                        tam5 = current.data.soLuongTonKho;
+                        current.data.soLuongTonKho = index.data.soLuongTonKho;
+                        index.data.soLuongTonKho = tam5;
+                        // Sắp xếp ngày nhập kho
+                        tam6 = current.data.ngayNhapKho;
+                        current.data.ngayNhapKho = index.data.ngayNhapKho;
+                        index.data.ngayNhapKho = tam6;
+                    }
+                    index = index.next;
+                }
+                current = current.next;
+            }
+        }
+        System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI SẮP XẾP ==========");
+        print();
+    }
+    // Hàm sắp xếp tăng dần theo ngày nhập kho kiểu BubbleSort
+    void bubbleSortTheoNgayTangDan() {
+        Node current = head;
+        Node index = null;
+        String tam1, tam3;
+        int tam2, tam5;
+        double tam4;
+        Date tam6;
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            while (current != null) {
+                index = current.next;
+                while (index != null) {
+                    if (current.data.ngayNhapKho.compareTo(index.data.ngayNhapKho)==1 ) {
+                        // Sắp xếp loại hàng hóa
+                        tam1 = current.data.loai;
+                        current.data.loai = index.data.loai;
+                        index.data.loai = tam1;
+                        // Sắp xếp id hàng hóa
+                        tam2 = current.data.id;
+                        current.data.id = index.data.id;
+                        index.data.id = tam2;
+                        // Sắp xếp tên hàng hóa
+                        tam3 = current.data.tenHangHoa;
+                        current.data.tenHangHoa = index.data.tenHangHoa;
+                        index.data.tenHangHoa = tam3;
+                        // Sắp xếp giá nhập 
+                        tam4 = current.data.giaNhap;
+                        current.data.giaNhap = index.data.giaNhap;
+                        index.data.giaNhap = tam4;
+                        // Sắp xếp số lượng tồn kho
+                        tam5 = current.data.soLuongTonKho;
+                        current.data.soLuongTonKho = index.data.soLuongTonKho;
+                        index.data.soLuongTonKho = tam5;
+                        // Sắp xếp ngày nhập kho
+                        tam6 = current.data.ngayNhapKho;
+                        current.data.ngayNhapKho = index.data.ngayNhapKho;
+                        index.data.ngayNhapKho = tam6;
+
+                    }
+                    index = index.next;
+                }
+                current = current.next;
+            }
+        }
+        System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI SẮP XẾP ==========");
+        print();
+    }
+    // Hàm sắp xếp giảm theo ngày kiểu BubleSort 
+    void bubbleSortTheoNgayGiamDan() {
+        Node current = head;
+        Node index = null;
+        String tam1, tam3;
+        int tam2, tam5;
+        double tam4;
+        Date tam6;
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            while (current != null) {
+                index = current.next;
+                while (index != null) {
+                    if (current.data.ngayNhapKho.compareTo(index.data.ngayNhapKho)==-1) {
+                        // Sắp xếp loại hàng hóa
+                        tam1 = current.data.loai;
+                        current.data.loai = index.data.loai;
+                        index.data.loai = tam1;
+                        // Sắp xếp id hàng hóa
+                        tam2 = current.data.id;
+                        current.data.id = index.data.id;
+                        index.data.id = tam2;
+                        // Sắp xếp tên hàng hóa
+                        tam3 = current.data.tenHangHoa;
+                        current.data.tenHangHoa = index.data.tenHangHoa;
+                        index.data.tenHangHoa = tam3;
+                        // Sắp xếp giá nhập
+                        tam4 = index.data.giaNhap;
+                        index.data.giaNhap = current.data.giaNhap;
+                        current.data.giaNhap = tam4;
+                        // Sắp xếp số lượng tồn kho
+                        tam5 = current.data.soLuongTonKho;
+                        current.data.soLuongTonKho = index.data.soLuongTonKho;
+                        index.data.soLuongTonKho = tam5;
+                        // Sắp xếp ngày nhap kho
+                        tam6 = current.data.ngayNhapKho;
+                        current.data.ngayNhapKho = index.data.ngayNhapKho;
+                        index.data.ngayNhapKho = tam6;
+
+                    }
+                    index = index.next;
+                }
+                current = current.next;
+            }
+        }
+        System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI SẮP XẾP ==========");
+        print();
+    }
+    // Hàm sắp xếp tăng dần theo loại và theo giá kiểu BubbleSort
+    void bubbleSortTheoLoaiVaTheoGiaTangDan() {
+        Node current = head;
+        Node index = null;
+        Scanner sc = new Scanner(System.in);
+        String tam, tam3;
+        int tam2, tam5;
+        double tam4;
+        Date tam6;
+        System.out.print("Nhập loại hàng hóa cần sắp xếp: ");
+        tam = sc.nextLine();
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            while (current != null) {
+                index = current.next;
+                while (index != null) {
+                    if (current.data.loai.equals(tam) && index.data.loai.equals(tam)) {                   
+                        if (current.data.giaNhap > index.data.giaNhap ) {
+                            // Sắp xếp loại hàng hóa
+                            tam = current.data.loai;
                             current.data.loai = index.data.loai;
-                            index.data.loai = tam1;
-                            // mã
-                            tam2 = current.data.maHang;
-                            current.data.maHang = index.data.maHang;
-                            index.data.maHang = tam2;
-                            // tên
+                            index.data.loai = tam;
+                            // Sắp xếp id hàng hóa
+                            tam2 = current.data.id;
+                            current.data.id = index.data.id;
+                            index.data.id = tam2;
+                            // Sắp xếp tên hàng hóa
                             tam3 = current.data.tenHangHoa;
                             current.data.tenHangHoa = index.data.tenHangHoa;
                             index.data.tenHangHoa = tam3;
-                            // giá nhập
+                            // Sắp xếp giá nhập khẩu
                             tam4 = current.data.giaNhap;
                             current.data.giaNhap = index.data.giaNhap;
                             index.data.giaNhap = tam4;
-                            // số lượng tồn kho
+                            // Sắp xếp số lượng tồn kho
                             tam5 = current.data.soLuongTonKho;
                             current.data.soLuongTonKho = index.data.soLuongTonKho;
                             index.data.soLuongTonKho = tam5;
-    
+                            // Sắp xếp ngày nhập kho
+                            tam6 = current.data.ngayNhapKho;
+                            current.data.ngayNhapKho = index.data.ngayNhapKho;
+                            index.data.ngayNhapKho = tam6;                            
                         }
-                        index = index.next;
                     }
-                    current = current.next;
+                    index = index.next;
                 }
+                current = current.next;
             }
         }
-
-        void bubbleSortTheoGiaGiamDan() {
-            Node current = head;
-            Node index = null;
-            String tam1;
-            int tam2;
-            String tam3;
-            double tam4;
-            int tam5;
-            Date tam6;
-            if (head == null) {
-                System.out.println("- Danh sách rỗng.");
-            } else {
-                while (current != null) {
-                    index = current.next;
-                    while (index != null) {
-                        if (current.data.giaNhap < index.data.giaNhap) {
-                            // loại
-                            tam1 = current.data.loai;
+        System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI SẮP XẾP ==========");
+        print();
+    }
+    // Hàm sắp xếp giảm dần theo loại và theo giá kiểu BubbleSort
+    void bubbleSortTheoLoaiVaTheoGiaGiamDan() {
+        Node current = head;
+        Node index = null;
+        Scanner sc = new Scanner(System.in);
+        String tam, tam3;
+        int tam2, tam5;
+        double tam4;
+        Date tam6;
+        System.out.print("Nhập loại hàng hóa cần sắp xếp: ");
+        tam = sc.nextLine();
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            while (current != null) {
+                index = current.next;
+                while (index != null) {
+                    if (current.data.loai.equals(tam) && index.data.loai.equals(tam)) {                    
+                        if (current.data.giaNhap < index.data.giaNhap ) {
+                            // Sắp xếp loại hàng hóa
+                            tam = current.data.loai;
                             current.data.loai = index.data.loai;
-                            index.data.loai = tam1;
-                            // mã
-                            tam2 = current.data.maHang;
-                            current.data.maHang = index.data.maHang;
-                            index.data.maHang = tam2;
-                            // tên
+                            index.data.loai = tam;
+                            // Sắp xếp id hàng hóa
+                            tam2 = current.data.id;
+                            current.data.id = index.data.id;
+                            index.data.id = tam2;
+                            // Sắp xếp tên hàng hóa
                             tam3 = current.data.tenHangHoa;
                             current.data.tenHangHoa = index.data.tenHangHoa;
                             index.data.tenHangHoa = tam3;
-                            // giá nhập
-                            tam4 = index.data.giaNhap;
-                            index.data.giaNhap = current.data.giaNhap;
-                            current.data.giaNhap = tam4;
-                            // số lượng tồn kho
+                            // Sắp xếp giá nhập khẩu
+                            tam4 = current.data.giaNhap;
+                            current.data.giaNhap = index.data.giaNhap;
+                            index.data.giaNhap = tam4;
+                            // Sắp xếp số lượng tồn kho
                             tam5 = current.data.soLuongTonKho;
                             current.data.soLuongTonKho = index.data.soLuongTonKho;
                             index.data.soLuongTonKho = tam5;
-    
+                            // Sắp xếp ngày nhập kho
+                            tam6 = current.data.ngayNhapKho;
+                            current.data.ngayNhapKho = index.data.ngayNhapKho;
+                            index.data.ngayNhapKho = tam6;
                         }
-                        index = index.next;
                     }
-                    current = current.next;
+                    index = index.next;
                 }
+                current = current.next;
             }
         }
-
-        void thongKe(){
-            Node current = head;
-            int sum1 = 0;
-            double sum2 = 0;
+        System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI SẮP XẾP ==========");
+        print();
+    }
+    // Hàm sắp xếp tăng dần theo loại và theo ngày kiểu BubbleSort
+    void bubbleSortTheoLoaiVaTheoNgayTangDan() {
+        Node current = head;
+        Node index = null;
+        Scanner sc = new Scanner(System.in);
+        String tam, tam3;
+        int tam2, tam5;
+        double tam4;
+        Date tam6;
+        System.out.print("Nhập loại hàng hóa cần sắp xếp: ");
+        tam = sc.nextLine();
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            while (current != null) {
+                index = current.next;
+                while (index != null) {
+                    if (current.data.loai.equals(tam) && index.data.loai.equals(tam)) {                    
+                        if (current.data.ngayNhapKho.compareTo(index.data.ngayNhapKho) == 1) {
+                            // Sắp xếp loại hàng hóa
+                            tam = current.data.loai;
+                            current.data.loai = index.data.loai;
+                            index.data.loai = tam;
+                            // Sắp xếp id hàng hóa
+                            tam2 = current.data.id;
+                            current.data.id = index.data.id;
+                            index.data.id = tam2;
+                            // Sắp xếp tên hàng hóa
+                            tam3 = current.data.tenHangHoa;
+                            current.data.tenHangHoa = index.data.tenHangHoa;
+                            index.data.tenHangHoa = tam3;
+                            // Sắp xếp giá nhập khẩu
+                            tam4 = current.data.giaNhap;
+                            current.data.giaNhap = index.data.giaNhap;
+                            index.data.giaNhap = tam4;
+                            // Sắp xếp số lượng tồn kho
+                            tam5 = current.data.soLuongTonKho;
+                            current.data.soLuongTonKho = index.data.soLuongTonKho;
+                            index.data.soLuongTonKho = tam5;
+                            // Sắp xếp ngày nhập kho
+                            tam6 = current.data.ngayNhapKho;
+                            current.data.ngayNhapKho = index.data.ngayNhapKho;
+                            index.data.ngayNhapKho = tam6;
+                        }
+                    }
+                    index = index.next;
+                }
+                current = current.next;
+            }
+        }
+        System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI SẮP XẾP ==========");
+        print();
+    }
+    // Hàm sắp xếp giảm dần theo loại và theo ngày kiểu BubbleSort
+    void bubbleSortTheoLoaiVaTheoNgayGiamDan() {
+        Node current = head;
+        Node index = null;
+        Scanner sc = new Scanner(System.in);
+        String tam, tam3;
+        int tam2, tam5;
+        double tam4;
+        Date tam6;
+        System.out.print("Nhập loại hàng hóa cần sắp xếp: ");
+        tam = sc.nextLine();
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            while (current != null) {
+                index = current.next;
+                while (index != null) {
+                    if (current.data.loai.equals(tam) && index.data.loai.equals(tam)) {                    
+                        if (current.data.ngayNhapKho.compareTo(index.data.ngayNhapKho) == -1) {
+                            // Sắp xếp loại hàng hóa
+                            tam = current.data.loai;
+                            current.data.loai = index.data.loai;
+                            index.data.loai = tam;
+                            // Sắp xếp id hàng hóa
+                            tam2 = current.data.id;
+                            current.data.id = index.data.id;
+                            index.data.id = tam2;
+                            // Sắp xếp tên hàng hóa
+                            tam3 = current.data.tenHangHoa;
+                            current.data.tenHangHoa = index.data.tenHangHoa;
+                            index.data.tenHangHoa = tam3;
+                            // Sắp xếp giá nhập khẩu
+                            tam4 = current.data.giaNhap;
+                            current.data.giaNhap = index.data.giaNhap;
+                            index.data.giaNhap = tam4;
+                            // Sắp xếp số lượng tồn kho
+                            tam5 = current.data.soLuongTonKho;
+                            current.data.soLuongTonKho = index.data.soLuongTonKho;
+                            index.data.soLuongTonKho = tam5;
+                            // Sắp xếp ngày nhập kho
+                            tam6 = current.data.ngayNhapKho;
+                            current.data.ngayNhapKho = index.data.ngayNhapKho;
+                            index.data.ngayNhapKho = tam6;
+                        }
+                    }
+                    index = index.next;
+                }
+                current = current.next;            
+            }
             
-            if (head == null) {
-                System.out.println("- Danh sách rỗng.");
-            } else {
-                while (current != null) {
-                    sum1 += current.data.soLuongTonKho;
-                    sum2 += current.data.giaNhap; 
-                    current = current.next;                    
-                }
-            }
-            System.out.print("\nTổng số lượng hàng hóa: " +sum1);
-            System.out.print("\nTổng giá trị hàng hóa nhập khoa: " +sum2);            
         }
-
-        void thongKeTheoLoaithongKe(){
-            Node current = head;
-            int sum1 = 0, sum3 = 0, sum2 = 0;
-            String loai1 = "Thực phẩm";
-            String loai2 = "Sành sứ";
-            String loai3 = "Điện máy";
-            // Scanner sc = new Scanner(System.in);
-            // System.out.println("Nhập loại ");
-            if (head == null) {
-                System.out.println("- Danh sách rỗng.");
-            } else {
-                while (current != null) {
-                    if (current.data.loai==loai1) {
-                        sum1 += current.data.soLuongTonKho;
-                        current = current.next;
-                    }
-                    if (current.data.loai==loai2) {
-                        sum2 += current.data.soLuongTonKho;
-                        current = current.next;
-                    }
-                    if (current.data.loai==loai3) {
-                        sum3 += current.data.soLuongTonKho;
-                        current = current.next;
-                    }
-                    
-                    // current = current.next;
+        System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI SẮP XẾP ==========");        
+        print();
+    }
+    // Hàm thống kê hàng hóa 
+    void thongKe(){
+        Node current = head;
+        int sum1 = 0;
+        double sum2 = 0;
+        int sum3 = 0, sum4 = 0, sum5 = 0;
+        String loai1 = "Thuc pham";
+        String loai2 = "Sanh su";
+        String loai3 = "Dien may";
+        
+        if (head == null) {
+            System.out.println("- Danh sách rỗng.");
+        } else {
+            while (current != null) {
+                sum1 += current.data.soLuongTonKho; // sum1 = sum1 + số lượng tồn kho của Node current
+                sum2 += current.data.giaNhap; // sum2 = sum2 + giá nhập của Node current
+                // Nếu loai của Node current bằng loai1 thì sum3 = sum3 + số lượng tồn kho của Node current
+                if (current.data.loai==loai1) {
+                    sum3 += current.data.soLuongTonKho;
                 }
+                // Nếu loai của Node current bằng loai2 thì sum4 = sum4 + số lượng tồn kho của Node current
+                if (current.data.loai==loai2) {
+                    sum4 += current.data.soLuongTonKho;
+                }
+                // Nếu loai của Node current bằng loai3 thì sum5 = sum5 + số lượng tồn kho của Node current
+                if (current.data.loai==loai3) {
+                    sum5 += current.data.soLuongTonKho;
+                }
+                current = current.next;                    
             }
-            System.out.print("\nTổng số lượng thực phẩm: " +sum1);
-            System.out.print("\nTổng số lượng sành sứ: " +sum2);
-            System.out.print("\nTổng số lượng điện máy: " +sum3);
-            
         }
+        System.out.println("=============== THỐNG KÊ HÀNG HÓA ===============");
+        System.out.println("\nTổng số lượng hàng hóa: " +sum1);
+        System.out.println("\nTổng giá trị hàng hóa nhập kho: " +sum2); 
+        System.out.println("\nTổng số lượng thực phẩm: " +sum3);
+        System.out.println("\nTổng số lượng sành sứ: " +sum4);
+        System.out.println("\nTổng số lượng điện máy: " +sum5);           
+    }
+    //    Hàm in hàng hóa
     void print(){
         Node current;
         current = head;
@@ -498,14 +898,248 @@ public class QuanLyHangHoa {
             return;
         }
 
-        System.out.println("====================Kho hàng====================");
-        // System.out.println(  +"\t"  +"\t"  +"\t"  +"\t" +"Ngày nhập kho:" );
+        System.out.println("============================================================ DANH SÁCH HÀNG HÓA ============================================================");
         while(current!=null){
             current.data.inThongTin();
             current = current.next;
         }
+    } 
+
+// Menu chương trình
+void menu(){
+    Scanner sc = new Scanner(System.in);
+        int luaChon = 0;
+        int key = 0;
+        
+        do{
+            System.out.println("+ + + + + + + + MENU  + + + + + + + +");
+            System.out.println("+                                   +");
+            System.out.println("+   >> 1: Thêm hàng hóa.            +");
+            System.out.println("+   >> 2: Xóa hàng hóa.             +");
+            System.out.println("+   >> 3: Sửa thông tin hàng hóa.   +");
+            System.out.println("+   >> 4: Tìm kiếm hàng hóa.        +");
+            System.out.println("+   >> 5: Sắp xếp hàng hóa.         +");
+            System.out.println("+   >> 6: Thống kê hàng hóa.        +");
+            System.out.println("+   >> 7: In danh sách hàng hóa.    +");
+            System.out.println("+   >> 0: Thoát chương trình.       +");
+            System.out.println("+                                   +");
+            System.out.println("+ + + + + + + + + + + + + + + + + + +");
+
+            System.out.print("- Nhập vào sựa lựa chọn: ");
+            luaChon = sc.nextInt();
+
+            switch (luaChon) {
+                case 1:
+                    do {
+                        System.out.println("+ + + + + + + + + + + + MENU THÊM HÀNG HÓA  + + + + + + + + + + + +");
+                        System.out.println("+                                                                 +");
+                        System.out.println("+   >> 1: Thêm hàng hóa vào đầu danh sách.                        +");
+                        System.out.println("+   >> 2: Thêm hàng hóa vào cuối danh sách.                       +");
+                        System.out.println("+   >> 3: Thêm hàng hóa vào trước mã hàng hóa có danh sách.       +");
+                        System.out.println("+   >> 4: Thêm hàng hóa vào sau mã hàng hóa có danh sách.         +");
+                        System.out.println("+   >> 5: Thêm hàng hóa vào vị trí.                               +");
+                        System.out.println("+   >> 6: In danh sách hàng hóa sau khi thêm.                     +");
+                        System.out.println("+   >> 0: Thoát Menu thêm hàng hóa.                               +");
+                        System.out.println("+                                                                 +");
+                        System.out.println("+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +");
+
+                        System.out.print("- Nhập vào sựa lựa chọn: ");
+                        key = sc.nextInt();
+
+                        switch (key) {
+                            case 1:
+                                addFirst();
+                                n++;                            
+                                break;  
+
+                            case 2:
+                                addLast();
+                                n++;   
+                                break;
+
+                            case 3:
+                                addFrontNode();
+                                n++;   
+                                break;
+
+                            case 4:
+                                addBehindNode(); 
+                                n++;   
+                                break;
+                            case 5:
+                                addAtk();
+                                n++;
+                                break;
+                            case 6:
+                                System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI THÊM ==========");
+                                print();
+                            case 0:
+                                break;
+                            default:  
+                                System.out.println("- Cú pháp đã sai vui lòng nhập lại!!!");  
+                                break;                
+                            
+                        }
+                        
+                    } while (key != 0);
+
+                    break;
+                case 2:
+                    do {
+                        System.out.println("+ + + + + + + + MENU XÓA HÀNG HÓA + + + + + + + +");
+                        System.out.println("+                                               +");
+                        System.out.println("+   >> 1: Xóa hàng hóa vào đầu danh sách.       +");
+                        System.out.println("+   >> 2: Xóa hàng hóa vào cuối danh sách.      +");
+                        System.out.println("+   >> 3: Xóa hàng hóa theo mã hàng hóa.        +");
+                        System.out.println("+   >> 4: In danh sách hàng hóa sau khi xóa.    +");
+                        System.out.println("+   >> 0: Thoát Menu xóa hàng hóa.              +");
+                        System.out.println("+                                               +");
+                        System.out.println("+ + + + + + + + + + + + + + + + + + + + + + + + +");
+                        
+                        System.out.print("- Nhập vào sựa lựa chọn: ");
+                        key = sc.nextInt();
+                        switch (key) {
+                            case 1:
+                                removeFirst();
+                                n--;   
+                                break;
+                            case 2:
+                                removeLast();
+                                n--;
+                                break;
+                            case 3:
+                                removeTheoMa();
+                                n--;
+                                break;
+                            case 4:
+                                System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI XÓA ==========");
+                                print();
+                            case 0:
+                                break;
+                            default:
+                                System.out.println("- Cú pháp đã sai vui lòng nhập lại!!!");
+                                break;                    
+                        }
+                    
+                    } while (key != 0);
+
+                    break;
+                case 3:
+                        set();
+                        break;
+
+                case 4:
+                    do {
+                        System.out.println("+ + + + + + + + + + + MENU TÌM KIẾM HÀNG HÓA  + + + + + + + + + + + +");
+                        System.out.println("+                                                                   +");
+                        System.out.println("+   >> 1: Tìm kiếm hàng hóa theo loại hàng hóa.                     +");
+                        System.out.println("+   >> 2: Tìm kiếm hàng hóa theo một giá nhập khẩu nhất định.       +");
+                        System.out.println("+   >> 3: Tìm kiếm hàng hóa theo khoản giá nhập khẩu.               +");
+                        System.out.println("+   >> 4: Tìm kiếm hàng hóa theo ngày nhập kho.                     +");
+                        System.out.println("+   >> 5: Tìm kiếm hàng hóa theo ngày nhập kho từ ngày đến ngày.    +");
+                        System.out.println("+   >> 0: Thoát Menu tìm kiếm hàng hóa.                             +");
+                        System.out.println("+                                                                   +");
+                        System.out.println("+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +");
+
+                        System.out.print("- Nhập vào sựa lựa chọn: ");
+                        key = sc.nextInt();
+
+                        switch (key) {
+                            case 1: 
+                                checkSearchLoai();   
+                                break;
+
+                            case 2:
+                                checkSearchGia();
+                                break; 
+
+                            case 3:
+                                checkSearchGiaKhoan();
+                                break;
+                            case 4:   
+                                checkSearchNgay();  
+                                break;  
+                            case 5:   
+                                checkSearchNgayKhoan();  
+                                break;
+                            case 0:
+                                break;
+                            default:
+                                System.out.println("- Cú pháp đã sai vui lòng nhập lại!!!");
+                                break;                    
+                        }
+                    
+                    } while (key !=0 );
+                    break;
+
+                case 5:
+                    do {
+                        System.out.println("+ + + + + + + + + + + + + + + MENU SẮP XẾP HÀNG HÓA + + + + + + + + + + + + + + +");
+                        System.out.println("+                                                                               +");
+                        System.out.println("+   >> 1: Sắp xếp hàng hóa tăng dần theo giá hàng hóa.                          +");
+                        System.out.println("+   >> 2: Sắp xếp hàng hóa giảm dần theo giá hàng hóa.                          +");
+                        System.out.println("+   >> 3: Sắp xếp hàng hóa tăng dần theo ngày nhập kho.                         +");
+                        System.out.println("+   >> 4: Sắp xếp hàng hóa giảm dần theo ngày nhập kho.                         +");
+                        System.out.println("+   >> 5: Sắp xếp hàng hóa tăng dần theo loại hàng hóa và theo giá nhập khẩu.   +");
+                        System.out.println("+   >> 6: Sắp xếp hàng hóa giảm dần theo loại hàng hóa và theo giá nhập khẩu.   +");
+                        System.out.println("+   >> 7: Sắp xếp hàng hóa tăng dần theo loại hàng hóa và theo ngày nhập kho.   +");
+                        System.out.println("+   >> 8: Sắp xếp hàng hóa giảm dần theo loại hàng hóa và theo ngày nhập kho.   +");
+                        System.out.println("+   >> 0: Thoát Menu sắp xếp hàng hóa.                                          +");
+                        System.out.println("+                                                                               +");
+                        System.out.println("+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +");
+                    
+                        System.out.print("- Nhập vào sựa lựa chọn: ");
+                        key = sc.nextInt();
+                        
+                        switch (key) {
+                            case 1:
+                                bubbleSortTheoGiaTangDan();
+                                break;
+                            case 2:
+                                bubbleSortTheoGiaGiamDan();
+                                break;
+                            case 3:
+                                bubbleSortTheoNgayTangDan();
+                                break;
+                            case 4:
+                                bubbleSortTheoNgayGiamDan();
+                                break;
+                            case 5:
+                                bubbleSortTheoLoaiVaTheoGiaTangDan();
+                                break;
+                            case 6:
+                                bubbleSortTheoLoaiVaTheoGiaGiamDan();
+                                break;
+                            case 7:
+                                bubbleSortTheoLoaiVaTheoNgayTangDan();
+                                break;
+                            case 8:
+                                bubbleSortTheoLoaiVaTheoNgayGiamDan();
+                                break;
+                            case 0:
+                                break;
+                            default:
+                                System.out.println("- Cú pháp đã sai vui lòng nhập lại!!!");
+                                break;   
+                                            
+                        }
+                    
+                    } while (key != 0);
+                    break;
+
+                case 6:
+                    thongKe();               
+                    break;
+
+                case 7:
+                    print();
+                    break;
+                default:
+                    System.out.println("- Cú pháp đã sai vui lòng nhập lại!!!");
+                    break;
+            }
+
+        } while(luaChon != 0);
+
     }
-    
-
-
 }
