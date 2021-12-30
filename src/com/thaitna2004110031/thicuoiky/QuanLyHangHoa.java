@@ -221,11 +221,11 @@ public class QuanLyHangHoa {
     }
     // Hàm xoá cuối
     void removeLast(){
-        if (isEmpty()) {
+        if (isEmpty() == true) {
             System.out.println("- Danh sách rỗng!!!");
         }
         Node current = head;
-        while (current !=null) {
+        while (current != null) {
             // Nếu Node current trỏ đến Node tail thì Node current sẽ gán vào Node tail và Node tail sẽ trỏ đến Node rỗng.
            if (current.next == tail) {
                tail = current;
@@ -286,8 +286,8 @@ public class QuanLyHangHoa {
              *  và giá trị mà Node newNode trỏ đến sẽ được gán giá trị mà Node preNode trỏ đến.*/
             if (current.next == preNode) {
                 Node newNode = new Node(khoHang);
-                current.next = newNode;                
                 newNode.data.nhapThongTin();
+                current.next = newNode;           
                 newNode.next = preNode.next;
             }
             current = current.next;
@@ -316,7 +316,7 @@ public class QuanLyHangHoa {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập loại hàng hóa cần tìm: ");
         String loaiCanTim = sc.nextLine();
-        if (false == searchLoai(loaiCanTim)) {
+        if (searchLoai(loaiCanTim) == false) {
             System.out.println("- Loại hàng hóa cần tìm không có trong danh sách!!!");
         }
     }
@@ -340,7 +340,7 @@ public class QuanLyHangHoa {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập giá nhập khẩu của hàng hóa cần tìm: ");
         double giaCanTim = sc.nextDouble();
-        if (false == searchGia(giaCanTim)) {
+        if (searchGia(giaCanTim) == false) {
             System.out.println("- Giá nhập khẩu của hàng hóa cần tìm không có trong danh sách!!!");
         } 
     }
@@ -362,12 +362,12 @@ public class QuanLyHangHoa {
     // Hàm thực thi chức năng searchGiaKhoan
     void checkSearchGiaKhoan(){
         Scanner sc = new Scanner(System.in);       
-        System.out.println("Nhập giá hàng hóa cần tìm");
+        System.out.println("Nhập giá nhập khẩu của hàng hóa cần tìm");
         System.out.print("Giá từ: ");
         double giaNho = sc.nextDouble();
         System.out.print("Đến giá: ");
         double giaLon = sc.nextDouble();
-        if (false == searchGiaKhoan(giaNho, giaLon)) {
+        if (searchGiaKhoan(giaNho, giaLon) == false) {
             System.out.println("- Giá nhập khẩu của hàng hóa cần tìm không có trong danh sách!!!");
         }       
     }
@@ -398,7 +398,7 @@ public class QuanLyHangHoa {
 
         } catch (Exception e) {
         }
-        if (false == searchNgay(ngay)) {
+        if (searchNgay(ngay) == false) {
             System.out.println("- Ngày nhập kho của hàng hóa cần tìm không có trong danh sách!!!");
         } 
         
@@ -452,8 +452,9 @@ public class QuanLyHangHoa {
         int tam2, tam5;
         double tam4;
         Date tam6;
-        if (head == null) {
+        if (isEmpty() == true) {
             System.out.println("- Danh sách rỗng.");
+            return;
         } else {
             while (current != null) {
                 index = current.next;
@@ -500,8 +501,9 @@ public class QuanLyHangHoa {
         int tam2, tam5;
         double tam4;
         Date tam6;
-        if (head == null) {
+        if (isEmpty() == true) {
             System.out.println("- Danh sách rỗng.");
+            return;
         } else {
             while (current != null) {
                 index = current.next;
@@ -548,13 +550,14 @@ public class QuanLyHangHoa {
         int tam2, tam5;
         double tam4;
         Date tam6;
-        if (head == null) {
+        if (isEmpty() == true) {
             System.out.println("- Danh sách rỗng.");
+            return;
         } else {
             while (current != null) {
                 index = current.next;
                 while (index != null) {
-                    if (current.data.ngayNhapKho.compareTo(index.data.ngayNhapKho)==1 ) {
+                    if (current.data.ngayNhapKho.compareTo(index.data.ngayNhapKho) == 1 ) {
                         // Sắp xếp loại hàng hóa
                         tam1 = current.data.loai;
                         current.data.loai = index.data.loai;
@@ -597,13 +600,14 @@ public class QuanLyHangHoa {
         int tam2, tam5;
         double tam4;
         Date tam6;
-        if (head == null) {
+        if (isEmpty() == true) {
             System.out.println("- Danh sách rỗng.");
+            return;
         } else {
             while (current != null) {
                 index = current.next;
                 while (index != null) {
-                    if (current.data.ngayNhapKho.compareTo(index.data.ngayNhapKho)==-1) {
+                    if (current.data.ngayNhapKho.compareTo(index.data.ngayNhapKho) == -1) {
                         // Sắp xếp loại hàng hóa
                         tam1 = current.data.loai;
                         current.data.loai = index.data.loai;
@@ -649,14 +653,15 @@ public class QuanLyHangHoa {
         Date tam6;
         System.out.print("Nhập loại hàng hóa cần sắp xếp: ");
         tam = sc.nextLine();
-        if (head == null) {
+        if (isEmpty() == true) {
             System.out.println("- Danh sách rỗng.");
+            return;
         } else {
             while (current != null) {
                 index = current.next;
                 while (index != null) {
                     if (current.data.loai.equals(tam) && index.data.loai.equals(tam)) {                   
-                        if (current.data.giaNhap > index.data.giaNhap ) {
+                        if (current.data.giaNhap > index.data.giaNhap) {
                             // Sắp xếp loại hàng hóa
                             tam = current.data.loai;
                             current.data.loai = index.data.loai;
@@ -702,8 +707,9 @@ public class QuanLyHangHoa {
         Date tam6;
         System.out.print("Nhập loại hàng hóa cần sắp xếp: ");
         tam = sc.nextLine();
-        if (head == null) {
+        if (isEmpty() == true) {
             System.out.println("- Danh sách rỗng.");
+            return;
         } else {
             while (current != null) {
                 index = current.next;
@@ -808,8 +814,9 @@ public class QuanLyHangHoa {
         Date tam6;
         System.out.print("Nhập loại hàng hóa cần sắp xếp: ");
         tam = sc.nextLine();
-        if (head == null) {
+        if (isEmpty() == true) {
             System.out.println("- Danh sách rỗng.");
+            return;
         } else {
             while (current != null) {
                 index = current.next;
@@ -861,22 +868,23 @@ public class QuanLyHangHoa {
         String loai2 = "Sanh su";
         String loai3 = "Dien may";
         
-        if (head == null) {
+        if (isEmpty() == true) {
             System.out.println("- Danh sách rỗng.");
+            return;
         } else {
             while (current != null) {
                 sum1 += current.data.soLuongTonKho; // sum1 = sum1 + số lượng tồn kho của Node current
                 sum2 += current.data.giaNhap; // sum2 = sum2 + giá nhập của Node current
                 // Nếu loai của Node current bằng loai1 thì sum3 = sum3 + số lượng tồn kho của Node current
-                if (current.data.loai==loai1) {
+                if (current.data.loai == loai1) {
                     sum3 += current.data.soLuongTonKho;
                 }
                 // Nếu loai của Node current bằng loai2 thì sum4 = sum4 + số lượng tồn kho của Node current
-                if (current.data.loai==loai2) {
+                if (current.data.loai == loai2) {
                     sum4 += current.data.soLuongTonKho;
                 }
                 // Nếu loai của Node current bằng loai3 thì sum5 = sum5 + số lượng tồn kho của Node current
-                if (current.data.loai==loai3) {
+                if (current.data.loai == loai3) {
                     sum5 += current.data.soLuongTonKho;
                 }
                 current = current.next;                    
@@ -893,13 +901,13 @@ public class QuanLyHangHoa {
     void print(){
         Node current;
         current = head;
-        if (head==null) {
+        if (isEmpty() == true) {
             System.out.println("Danh sách rỗng!!!");
             return;
         }
 
         System.out.println("============================================================ DANH SÁCH HÀNG HÓA ============================================================");
-        while(current!=null){
+        while(current != null){
             current.data.inThongTin();
             current = current.next;
         }
@@ -907,7 +915,7 @@ public class QuanLyHangHoa {
 
 // Menu chương trình
 void menu(){
-    Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         int luaChon = 0;
         int key = 0;
         
@@ -973,8 +981,6 @@ void menu(){
                             case 6:
                                 System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI THÊM ==========");
                                 print();
-                            case 0:
-                                break;
                             default:  
                                 System.out.println("- Cú pháp đã sai vui lòng nhập lại!!!");  
                                 break;                
@@ -1014,8 +1020,6 @@ void menu(){
                             case 4:
                                 System.out.println("========== DANH SÁCH HÀNG HÓA SAU KHI XÓA ==========");
                                 print();
-                            case 0:
-                                break;
                             default:
                                 System.out.println("- Cú pháp đã sai vui lòng nhập lại!!!");
                                 break;                    
@@ -1061,8 +1065,6 @@ void menu(){
                                 break;  
                             case 5:   
                                 checkSearchNgayKhoan();  
-                                break;
-                            case 0:
                                 break;
                             default:
                                 System.out.println("- Cú pháp đã sai vui lòng nhập lại!!!");
@@ -1115,8 +1117,6 @@ void menu(){
                                 break;
                             case 8:
                                 bubbleSortTheoLoaiVaTheoNgayGiamDan();
-                                break;
-                            case 0:
                                 break;
                             default:
                                 System.out.println("- Cú pháp đã sai vui lòng nhập lại!!!");
