@@ -2,7 +2,7 @@ package com.thaitna2004110031.tieuluancuoiki;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
-import java.util.Scanner;
+import java.util.Scanner; 
 
 public class QuanLyHangHoa {
     Node head = null;

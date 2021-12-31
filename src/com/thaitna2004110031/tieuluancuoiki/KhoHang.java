@@ -8,7 +8,7 @@ public class KhoHang {
     public String loai;
     int id;
     String tenHangHoa;
-    double giaNhap;
+    double giaNhap; 
     int soLuongTonKho;
     Date ngayNhapKho = null;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");;    

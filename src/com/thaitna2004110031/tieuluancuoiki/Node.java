@@ -6,7 +6,7 @@ public class Node {
 
     public Node(){
         data =  null;
-        next = null;
+        next = null; 
     }
 
     public Node(KhoHang khoHang){
