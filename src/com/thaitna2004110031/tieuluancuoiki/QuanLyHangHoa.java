@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class QuanLyHangHoa {
     Node head = null;
-    Node tail = null;
+    Node tail = null; 
     KhoHang khoHang;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
     int n = 30; // n= 30 vì kho hàng có 30 dữ liệu mồi

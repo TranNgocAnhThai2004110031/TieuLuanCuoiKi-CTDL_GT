@@ -3,7 +3,7 @@ package com.thaitna2004110031.tieuluancuoiki;
 public class QuanLyHangHoaTestDrive {
     public static void main(String[] args) {
         QuanLyHangHoa testDrive = new QuanLyHangHoa();
-        //  DỮ LIỆU MỒI
+        //  DỮ LIỆU MỒI 
         // Thực phẩm
         testDrive.add("Thuc pham", 11111, "Gạo", 15000, 500, "01/11/2021");
         testDrive.add("Thuc pham", 11112, "Trứng", 3000, 500, "02/11/2021");

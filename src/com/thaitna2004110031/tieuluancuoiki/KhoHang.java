@@ -67,6 +67,5 @@ public class KhoHang {
         System.out.println("Loại: " +loai +"\t" +"|| ID: "  +id +" || Tên hàng hóa: " +tenHangHoa +"\t" +"|| Giá nhập khẩu: " +giaNhap +"\t" +"|| Số lượng hóa tồn kho: " +soLuongTonKho +" || Ngày nhập kho: " +simpleDateFormat.format(ngayNhapKho));
               
     }
-
 }
 

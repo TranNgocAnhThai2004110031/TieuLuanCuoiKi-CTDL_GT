@@ -18,5 +18,4 @@ public class Node {
         data = khoHang;
         next = node;
     }
-    
 }
